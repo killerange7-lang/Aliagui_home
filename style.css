@@ -1,0 +1,359 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { 
+  font-family: 'Montserrat', Arial, sans-serif; 
+  color: #182442; 
+  background: #FBF9F4;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  letter-spacing: 0;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  background: #FFDEA5;
+  border-bottom: 1px solid #e5d9b8;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo { 
+  font-size: 26px; 
+  font-weight: bold; 
+  letter-spacing: 1px; 
+  color: #182442;
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #182442;
+  font-weight: 500;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon { color: #182442; transition: color 0.3s; }
+.icon:hover { color: #182442; }
+
+.cart svg { width: 24px; height: 24px; }
+
+.btn-service {
+  background: #182442;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Hero */
+.hero {
+  height: 85vh;
+  background: linear-gradient(rgba(24,36,66,0.5), rgba(24,36,66,0.5)), 
+              url('https://via.placeholder.com/1920x1080/182442/FFDEA5?text=Aliagui+Home') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 58px;
+}
+
+.hero-content p {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 29px;
+  max-width: 700px;
+  margin: 0 auto 35px;
+}
+
+.hero-buttons { display: flex; gap: 20px; justify-content: center; }
+
+.btn {
+  padding: 14px 38px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 12px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.primary { background: #182442; color: white; }
+.secondary { background: transparent; color: white; border: 2px solid white; }
+
+/* Notre Essence */
+.essence {
+  padding: 100px 5%;
+  background: #FBF9F4;
+}
+
+.essence-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.essence-text h2 {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 12px;
+  letter-spacing: 1.2px;
+  color: #182442;
+  margin-bottom: 15px;
+}
+
+.essence-text h3 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 58px;
+  margin-bottom: 25px;
+  color: #182442;
+}
+
+.essence-text p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 29px;
+  max-width: 480px;
+  margin-bottom: 30px;
+}
+
+.link {
+  color: #182442;
+  text-decoration: underline;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 12px;
+  letter-spacing: 1.2px;
+}
+
+.essence-values {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.value .icon {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+  color: #FFDEA5;
+}
+
+.value h4 {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 12px;
+  letter-spacing: 1.2px;
+  margin-bottom: 8px;
+  color: #182442;
+}
+
+.value p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #44474D;
+  line-height: 26px;
+}
+
+/* Collections */
+.collections-preview {
+  padding: 80px 5%;
+  text-align: center;
+  background: #FBF9F4;
+}
+
+.collections-preview h2 {
+  margin-bottom: 50px;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 58px;
+  color: #182442;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.card img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+.card h3 {
+  padding: 15px;
+  background: white;
+  text-align: center;
+  color: #182442;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 34px;
+}
+
+/* Footer */
+footer {
+  background: #182442;
+  color: #ddd;
+  padding: 70px 5% 40px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-col h3 {
+  color: #FFDEA5;
+  margin-bottom: 20px;
+}
+
+.footer-col a {
+  color: #ddd;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid #344d45;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 820px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .hero {
+    min-height: 72vh;
+    height: auto;
+    padding: 72px 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 38px;
+    line-height: 46px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .hero-buttons {
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .essence {
+    padding: 72px 20px;
+  }
+
+  .essence-container {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .essence-text h3,
+  .collections-preview h2 {
+    font-size: 38px;
+    line-height: 46px;
+  }
+
+  .essence-text p {
+    max-width: none;
+  }
+
+  .essence-values {
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px 22px;
+  }
+
+  .value {
+    min-width: 0;
+  }
+
+  .value p {
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero {
+    padding: 56px 18px;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+    line-height: 39px;
+  }
+
+  .essence,
+  .collections-preview {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .essence-values {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-wordmark {
+    font-size: 26px;
+    line-height: 32px;
+  }
+}

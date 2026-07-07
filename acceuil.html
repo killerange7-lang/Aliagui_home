@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aliagui Home</title>
+  <link rel="stylesheet" href="style.css?v=20260707">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #182442;
+      --gold: #fed488;
+      --footer-gold: #ffdea5;
+      --cart: #775a19;
+    }
+
+    @keyframes badge-breathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+      line-height: 1;
+    }
+
+    .site-header,
+    .site-footer {
+      font-family: "Montserrat", Arial, sans-serif;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      width: 100%;
+      height: 81px;
+      border-bottom: 1px solid rgba(119, 90, 25, 0.2);
+      background: rgba(251, 249, 244, 0.9);
+      backdrop-filter: blur(6px);
+    }
+
+    .site-header__inner {
+      width: 100%;
+      max-width: 1280px;
+      height: 80px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+    }
+
+    .brand {
+      width: 187px;
+      height: 72px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      transition: transform 220ms ease;
+    }
+
+    .brand img,
+    .footer-logo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .brand img {
+      filter: brightness(0) saturate(100%) invert(12%) sepia(29%) saturate(1156%) hue-rotate(186deg) brightness(89%) contrast(93%);
+    }
+
+    body {
+      padding-top: 81px;
+    }
+
+    body.modal-lock {
+      overflow: hidden;
+    }
+
+    .brand:hover {
+      transform: translateY(-1px);
+    }
+
+    .desktop-nav {
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 32px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      position: static;
+      top: auto;
+      z-index: auto;
+    }
+
+    .desktop-nav a {
+      min-height: 12px;
+      color: #45464e;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 12px;
+      letter-spacing: 1.2px;
+      text-decoration: none;
+      transition: color 200ms ease, opacity 200ms ease, transform 200ms ease;
+    }
+
+    .desktop-nav a:hover {
+      color: var(--primary);
+      opacity: 0.82;
+      transform: translateY(-1px);
+    }
+
+    .desktop-nav a[aria-current="page"] {
+      padding-bottom: 4px;
+      border-bottom: 2px solid var(--gold);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .menu-toggle {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--primary);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      flex: 0 0 auto;
+      transition: color 180ms ease, transform 180ms ease;
+    }
+
+    .menu-toggle:hover {
+      color: var(--cart);
+      transform: translateY(-1px);
+    }
+
+    .menu-toggle span {
+      width: 22px;
+      height: 1.5px;
+      background: currentColor;
+      position: absolute;
+      left: 9px;
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .menu-toggle span:nth-child(1) {
+      transform: translateY(-6px);
+    }
+
+    .menu-toggle span:nth-child(2) {
+      transform: translateY(0);
+    }
+
+    .menu-toggle span:nth-child(3) {
+      transform: translateY(6px);
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+
+    .header-actions {
+      height: 53px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--primary);
+    }
+
+    .icon-button {
+      position: relative;
+      width: 18px;
+      height: 27px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .icon-button .material-symbols-outlined {
+      font-size: 22px;
+      transition: transform 180ms ease;
+    }
+
+    .icon-button:hover {
+      opacity: 0.82;
+      transform: translateY(-2px);
+    }
+
+    .icon-button:hover .material-symbols-outlined {
+      transform: scale(1.08);
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -5px;
+      right: -9px;
+      width: 16px;
+      height: 16px;
+      border-radius: 12px;
+      background: var(--cart);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 15px;
+      animation: badge-breathe 2.8s ease-in-out infinite;
+    }
+
+    .service-button {
+      width: 166.16px;
+      height: 53px;
+      border: 0;
+      background: var(--primary);
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 12px;
+      letter-spacing: 1.2px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+    }
+
+    .service-button:hover {
+      background: #223153;
+      box-shadow: 0 14px 24px -18px rgba(24, 36, 66, 0.85);
+      transform: translateY(-2px);
+    }
+
+    .site-footer {
+      width: 100%;
+      min-height: 278px;
+      padding: 37px 0 32px;
+      border-top: 1px solid rgba(119, 90, 25, 0.1);
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .footer-top {
+      width: 100%;
+      max-width: 1280px;
+      min-height: 147.22px;
+      margin: 0 auto 8px;
+      padding: 0 64px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      align-items: end;
+    }
+
+    .footer-brand {
+      padding-bottom: 11.63px;
+    }
+
+    .footer-logo {
+      width: 150px;
+      height: 58px;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .footer-wordmark {
+      width: auto;
+      height: auto;
+      color: #ffffff;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 36px;
+      letter-spacing: -0.6px;
+      text-decoration: none;
+    }
+
+    .footer-logo img {
+      filter: brightness(0) saturate(100%) invert(90%) sepia(23%) saturate(906%) hue-rotate(334deg) brightness(102%) contrast(103%);
+    }
+
+    .footer-brand p {
+      max-width: 320px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 26px;
+    }
+
+    .footer-column h2 {
+      margin: 0 0 24px;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 12px;
+      letter-spacing: 1.2px;
+    }
+
+    .footer-column {
+      display: block;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      position: static;
+      top: auto;
+      z-index: auto;
+    }
+
+    .footer-column ul {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      list-style: none;
+    }
+
+    .footer-column a {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 26px;
+      text-decoration: none;
+      transition: color 180ms ease, transform 180ms ease;
+    }
+
+    .footer-column a:hover {
+      color: var(--footer-gold);
+      display: inline-block;
+      transform: translateX(4px);
+    }
+
+    .footer-bottom {
+      width: 100%;
+      max-width: 1280px;
+      height: 53px;
+      margin: 0 auto;
+      padding: 32px 64px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .footer-bottom p {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+    }
+
+    .footer-bottom a {
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 20px;
+      transition: color 180ms ease, transform 180ms ease;
+    }
+
+    .footer-bottom a:hover {
+      color: var(--footer-gold);
+      transform: rotate(-12deg);
+    }
+
+    .home-menu-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 70;
+      background: rgba(24, 36, 66, 0.28);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease;
+    }
+
+    .home-menu-backdrop.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 80;
+      width: min(390px, 100vw);
+      height: 100vh;
+      height: 100dvh;
+      padding: 24px 24px 28px;
+      background: #ffffff;
+      box-shadow: -18px 0 60px rgba(24, 36, 66, 0.22);
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      transform: translateX(100%);
+      transition: transform 220ms ease;
+    }
+
+    .mobile-menu.is-open {
+      transform: translateX(0);
+    }
+
+    .mobile-menu-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .mobile-menu-kicker,
+    .mobile-menu-title {
+      margin: 0;
+    }
+
+    .mobile-menu-kicker {
+      color: var(--cart);
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 14px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .mobile-menu-title {
+      margin-top: 8px;
+      color: var(--primary);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 34px;
+      line-height: 40px;
+    }
+
+    .mobile-menu-close {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      background: transparent;
+      color: var(--primary);
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .mobile-menu-close::before,
+    .mobile-menu-close::after {
+      content: "";
+      position: absolute;
+      left: 9px;
+      top: 19px;
+      width: 22px;
+      height: 1.5px;
+      background: currentColor;
+    }
+
+    .mobile-menu-close::before {
+      transform: rotate(45deg);
+    }
+
+    .mobile-menu-close::after {
+      transform: rotate(-45deg);
+    }
+
+    .mobile-menu-links {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .mobile-menu-links a {
+      min-height: 44px;
+      border-bottom: 1px solid rgba(119, 90, 25, 0.16);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 1024px) {
+      .site-header__inner {
+        padding: 0 32px;
+        gap: 28px;
+      }
+
+      .desktop-nav {
+        gap: 22px;
+      }
+
+      .service-button {
+        width: auto;
+        padding: 0 20px;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .site-header__inner {
+        padding: 0 20px;
+      }
+
+      .brand {
+        width: 150px;
+        height: 58px;
+      }
+
+      .desktop-nav,
+      .service-button,
+      .header-actions .icon-button:first-child {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .footer-top,
+      .footer-bottom {
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        align-items: start;
+      }
+
+      .footer-bottom {
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="acceuil.html" aria-label="ALIAGUI HOME">
+        <img src="img/logo.png" alt="ALIAGUI HOME">
+      </a>
+      <nav class="desktop-nav" aria-label="Navigation principale">
+        <a href="acceuil.html" aria-current="page">Acceuil</a>
+        <a href="collections.html">Collections</a>
+        <a href="histoire.html">Histoire</a>
+        <a href="showroom.html">Showroom</a>
+      </nav>
+      <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-controls="home-mobile-menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+      <div class="header-actions">
+        <button class="icon-button" type="button" aria-label="Rechercher">
+          <span class="material-symbols-outlined" aria-hidden="true">search</span>
+        </button>
+        <a class="icon-button" href="panier.html" aria-label="Panier">
+          <span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span>
+          <span class="cart-badge">2</span>
+        </a>
+        <a class="service-button" href="contact.html">Service Client</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="home-menu-backdrop" hidden></div>
+  <nav id="home-mobile-menu" class="mobile-menu" aria-label="Navigation mobile" hidden>
+    <div class="mobile-menu-head">
+      <div>
+        <p class="mobile-menu-kicker">Navigation</p>
+        <h2 class="mobile-menu-title">Menu</h2>
+      </div>
+      <button class="mobile-menu-close" type="button" aria-label="Fermer le menu"></button>
+    </div>
+    <div class="mobile-menu-links">
+      <a href="acceuil.html" aria-current="page">Acceuil</a>
+      <a href="collections.html">Collections</a>
+      <a href="histoire.html">Histoire</a>
+      <a href="showroom.html">Showroom</a>
+      <a href="contact.html">Service Client</a>
+    </div>
+  </nav>
+
+  <!-- Ancienne navbar remplacee par le header ci-dessus.
+  <nav>
+    <div class="logo">ALIAGUI HOME</div>
+    <ul class="nav-links">
+      <li><a href="#">Accueil</a></li>
+      <li><a href="#">Collections</a></li>
+      <li><a href="#">Notre Histoire</a></li>
+      <li><a href="#">Showroom</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#" class="icon search">🔍</a>
+      <a href="#" class="icon cart">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 22a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM18 22a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+          <path d="M3 3h2l.4 2M7 17h10l4-11H5.4M7 17L5.4 5M7 17h-.6"/>
+        </svg>
+      </a>
+      <button class="btn-service">SERVICE CLIENT</button>
+    </div>
+  </nav>
+  -->
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Le pagne de maman, <br>devient l’art de vivre d’aujourd’hui.</h1>
+      <p>Draps de lit en pagne premium. Confort, mémoire et raffinement.</p>
+      <div class="hero-buttons">
+        <a href="#" class="btn primary">Découvrir l'univers</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="essence">
+    <div class="essence-container">
+      <div class="essence-text">
+        <h2>NOTRE ESSENCE</h2>
+        <h3>Un refuge.<br>Une histoire.<br>Une émotion.</h3>
+        <p>Aliagui Home transforme le souvenir d’un pagne transmis en génération en une collection de linge de maison pensée pour accueillir, rassurer et transmettre.</p>
+        <a href="#" class="link">EN SAVOIR PLUS</a>
+      </div>
+
+      <div class="essence-values">
+        <div class="value">
+          <div class="icon">◆</div>
+          <h4>HÉRITAGE</h4>
+          <p>Le pagne transmis de génération en génération.</p>
+        </div>
+        <div class="value">
+          <div class="icon">〜</div>
+          <h4>DOUCEUR</h4>
+          <p>Le confort et la douceur au quotidien.</p>
+        </div>
+        <div class="value">
+          <div class="icon">☀</div>
+          <h4>ÉLÉGANCE</h4>
+          <p>Un luxe discret, intemporel et raffiné.</p>
+        </div>
+        <div class="value">
+          <div class="icon">⌂</div>
+          <h4>REFUGE</h4>
+          <p>La maison comme un lieu de paix et de protection.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="collections-preview">
+    <h2>Nos Collections</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://via.placeholder.com/400x500/8B5A2B/FFF?text=NANAN" alt="Nanan">
+        <h3>NANAN</h3>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/400x500/9C6644/FFF?text=TERANGA" alt="Teranga">
+        <h3>TERANGA</h3>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/400x500/6B4423/FFF?text=KAIRO" alt="Kairo">
+        <h3>KAIRO</h3>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/400x500/A67B5B/FFF?text=ESSENTIELS" alt="Essentiels">
+        <h3>ESSENTIELS</h3>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="footer-logo footer-wordmark" href="acceuil.html" aria-label="ALIAGUI HOME">ALIAGUI HOME</a>
+        <p>Cultivating craft and global luxury through heritage textiles and modern living.</p>
+      </div>
+
+      <nav class="footer-column" aria-label="Explorer">
+        <h2>EXPLORE</h2>
+        <ul>
+          <li><a href="collections.html">Collections</a></li>
+          <li><a href="histoire.html">Notre Histoire</a></li>
+          <li><a href="contact.html">Service Client</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-column" aria-label="Réseaux sociaux">
+        <h2>Reseaux</h2>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Tiktok</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 ALIAGUI HOME. CULTIVATED CRAFT, GLOBAL LUXURY.</p>
+      <a href="#" aria-label="Partager">
+        <span class="material-symbols-outlined" aria-hidden="true">share</span>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Ancien footer remplace par le footer ci-dessus.
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>ALIAGUI HOME</h3>
+        <p>Cultiver le confort et l’héritage africain à travers le linge de maison moderne.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Explorer</h3>
+        <a href="#">Collections</a>
+        <a href="#">Notre Histoire</a>
+        <a href="#">Showroom</a>
+      </div>
+      <div class="footer-col">
+        <h3>Service Client</h3>
+        <a href="#">Contact</a>
+        <a href="#">Livraison</a>
+        <a href="#">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h3>Réseaux</h3>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2026 Aliagui Home - Tous droits réservés
+    </div>
+  </footer>
+  -->
+
+  <script>
+    const homeMenuToggle = document.querySelector(".menu-toggle");
+    const homeMobileMenu = document.querySelector("#home-mobile-menu");
+    const homeMenuBackdrop = document.querySelector(".home-menu-backdrop");
+    const homeMenuClose = document.querySelector(".mobile-menu-close");
+
+    function openHomeMenu() {
+      homeMobileMenu.hidden = false;
+      homeMenuBackdrop.hidden = false;
+      document.body.classList.add("modal-lock");
+      requestAnimationFrame(() => {
+        homeMobileMenu.classList.add("is-open");
+        homeMenuBackdrop.classList.add("is-open");
+      });
+      homeMenuToggle.setAttribute("aria-expanded", "true");
+      homeMenuToggle.setAttribute("aria-label", "Fermer le menu");
+    }
+
+    function closeHomeMenu() {
+      homeMobileMenu.classList.remove("is-open");
+      homeMenuBackdrop.classList.remove("is-open");
+      document.body.classList.remove("modal-lock");
+      homeMenuToggle.setAttribute("aria-expanded", "false");
+      homeMenuToggle.setAttribute("aria-label", "Ouvrir le menu");
+      setTimeout(() => {
+        if (!homeMobileMenu.classList.contains("is-open")) {
+          homeMobileMenu.hidden = true;
+          homeMenuBackdrop.hidden = true;
+        }
+      }, 220);
+    }
+
+    homeMenuToggle.addEventListener("click", () => {
+      if (homeMobileMenu.classList.contains("is-open")) closeHomeMenu();
+      else openHomeMenu();
+    });
+
+    homeMenuClose.addEventListener("click", closeHomeMenu);
+    homeMenuBackdrop.addEventListener("click", closeHomeMenu);
+    homeMobileMenu.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeHomeMenu));
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeHomeMenu();
+    });
+  </script>
+</body>
+</html>
