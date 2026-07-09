@@ -6,7 +6,7 @@
   <title>Notre Histoire - Aliagui Home</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --navy: #182442;
@@ -18,8 +18,8 @@
       --terracotta: #934938;
       --gold: #ca8a04;
       --green: #25d366;
-      --sans: "Montserrat", "Nimbus Sans", Arial, Helvetica, sans-serif;
-      --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+      --sans: "Poppins", Arial, Helvetica, sans-serif;
+      --serif: "Calisto MT", "Bookman Old Style", Georgia, "Times New Roman", serif;
     }
 
     * {
@@ -825,8 +825,8 @@
 
     .site-footer {
       width: 100%;
-      height: 290px;
-      padding: 52px 48px 0;
+      height: 318px;
+      padding: 52px 48px 36px;
       background: var(--navy);
       color: #ffffff;
     }
@@ -834,11 +834,11 @@
     .footer-inner {
       width: 100%;
       max-width: 1184px;
-      height: 208px;
+      min-height: 226px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 26px;
+      gap: 34px;
     }
 
     .footer-columns {
@@ -997,11 +997,11 @@
 
     .footer-bottom {
       width: 100%;
-      height: 38px;
-      padding-top: 21px;
+      min-height: 48px;
+      padding-top: 30px;
       border-top: 1px solid #1f2937;
       display: flex;
-      align-items: flex-end;
+      align-items: flex-start;
       justify-content: center;
     }
 
@@ -1934,7 +1934,7 @@
 <body>
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="brand" href="acceuil.html" aria-label="Aliagui Home">
+      <a class="brand" href="index.html" aria-label="Aliagui Home">
         <img src="img/logo.png" alt="Aliagui Home">
       </a>
 
@@ -1952,7 +1952,7 @@
           </div>
           <button class="menu-close" type="button" aria-label="Fermer la navigation"></button>
         </div>
-        <a href="acceuil.html">Accueil</a>
+        <a href="index.html">Accueil</a>
         <a href="collections.html">Collections</a>
         <a href="histoire.html" aria-current="page">Histoire</a>
         <a href="showroom.html">Showroom</a>
@@ -1976,25 +1976,25 @@
         <a class="service-link" href="contact.html">Service Client</a>
 
         <div class="search-popover" role="search">
-          <input id="search-input" type="search" placeholder="Rechercher dans l'histoire" autocomplete="off">
+          <input id="search-input" type="search" placeholder="Rechercher un savoir-faire" autocomplete="off">
         </div>
       </div>
     </div>
   </header>
 
   <main class="history-main">
-    <section class="intro-section story-search-block" aria-labelledby="history-title" data-search="heritage craft notre histoire luxury west african pagne contemporary interior elegance">
-      <p class="eyebrow">Heritage &amp; Craft</p>
+    <section class="intro-section story-search-block" aria-labelledby="history-title" data-search="drap en pagne histoire textile africain chambre linge de lit confort">
+      <p class="eyebrow">Draps en pagne</p>
       <h1 id="history-title">Notre Histoire</h1>
-      <p class="intro-lead">We believe true luxury is woven with time, intent, and cultural reverence. ADJOA LUXE is born from a desire to elevate West African pagne from traditional attire to an anchor of contemporary interior elegance.</p>
+      <p class="intro-lead">Aliagui Home est n&eacute; d'une id&eacute;e simple : faire entrer la force du pagne dans la chambre, &agrave; travers des draps doux, durables et porteurs de m&eacute;moire.</p>
     </section>
 
-    <section class="origins-section story-search-block" data-search="origins pagne west africa patterns geometric motif ancestral wisdom lome abidjan">
+    <section class="origins-section story-search-block" data-search="origine pagne afrique textile drap lit memoire famille">
       <article class="story-copy origins-copy">
-        <h2>The Origins of Pagne</h2>
+        <h2>L'origine du drap en pagne</h2>
         <span class="divider" aria-hidden="true"></span>
-        <p>For centuries, the intricate patterns of woven pagne have served as a silent language across West Africa. Each geometric motif, every choice of color, carries a proverb, a wish for prosperity, or a piece of ancestral wisdom.</p>
-        <p>Our journey began in the vibrant markets of Lom&eacute; and Abidjan, where the tactile richness of these fabrics inspired a vision. What if this profound heritage could be experienced every day, enveloping the most intimate spaces of our modern homes?</p>
+        <p>Le pagne accompagne les grandes histoires familiales : les f&ecirc;tes, les transmissions, les gestes du quotidien. Ses couleurs et ses motifs portent une pr&eacute;sence que l'on reconna&icirc;t tout de suite.</p>
+        <p>Nous avons imagin&eacute; des draps en pagne pour que cette pr&eacute;sence quitte l'armoire et habille le lit : un linge de maison qui prot&egrave;ge, embellit et rappelle d'o&ugrave; l'on vient.</p>
       </article>
 
       <button class="origin-visual story-trigger" type="button" data-story="origins" aria-label="Lire l'origine du pagne">
@@ -2002,7 +2002,7 @@
       </button>
     </section>
 
-    <section class="weavers-section story-search-block" data-search="master weavers artisans loom communities fair trade slow production craftswomen">
+    <section class="weavers-section story-search-block" data-search="atelier tissu couture drap pagne finitions linge de lit">
       <div class="weavers-inner">
         <button class="loom-photo story-trigger" type="button" data-story="weavers" aria-label="Voir les artisans">
           <span class="loom-bar"></span>
@@ -2012,23 +2012,23 @@
         </button>
 
         <article class="story-copy weavers-copy">
-          <h2>The Master Weavers</h2>
+          <h2>Des tissus choisis pour le sommeil</h2>
           <span class="divider" aria-hidden="true"></span>
-          <p>The soul of ADJOA LUXE lies in the hands of our artisans. We partner directly with multigenerational weaving collectives, ensuring that the rhythmic clack of the loom continues to sustain communities.</p>
-          <p>These master craftsmen and craftswomen employ techniques passed down through oral tradition. By committing to fair trade practices and slow production, we preserve the integrity of the art form while achieving an unparalleled standard of quality that mass production can never replicate.</p>
+          <p>Chaque parure commence par le choix d'un tissu agr&eacute;able au toucher, capable de rester confortable nuit apr&egrave;s nuit. Le pagne apporte le caract&egrave;re, la mati&egrave;re apporte la douceur.</p>
+          <p>Nos finitions sont pens&eacute;es pour le lit : coutures solides, tomb&eacute; net, dimensions claires et entretien facile. Le r&eacute;sultat est un drap en pagne fait pour &ecirc;tre beau, mais surtout pour &ecirc;tre utilis&eacute;.</p>
         </article>
       </div>
     </section>
 
-    <section class="luxury-section story-search-block" data-search="ethnic luxury modern home mission storytelling textiles sanctuary cultural pride tactile comfort">
+    <section class="luxury-section story-search-block" data-search="chambre moderne drap pagne confort maison deco linge de lit">
       <div class="luxury-header">
         <span class="diamond-icon" aria-hidden="true">
           <svg width="39" height="35" viewBox="0 0 39 35">
             <path fill="currentColor" d="M11.4 3h16.2l8.2 9.1L19.5 32 3.2 12.1 11.4 3Zm1.5 3-4.1 4.6h6.6L17.3 6h-4.4Zm8.8 0 1.9 4.6h6.6L26.1 6h-4.4Zm-2.2.8-1.6 3.8h3.2l-1.6-3.8Zm-9.4 6.8 6.5 8.1-1.6-8.1h-4.9Zm8 0 1.4 11.1 1.4-11.1h-2.8Zm5.9 0-1.6 8.1 6.5-8.1H24Z"/>
           </svg>
         </span>
-        <h2>Ethnic Luxury for the Modern Home</h2>
-        <p>Our mission is to seamlessly blend the vibrant storytelling of West African textiles with the refined minimalism of contemporary design. ADJOA LUXE creates sanctuary spaces&mdash;where cultural pride meets serene, tactile comfort.</p>
+        <h2>Le pagne dans la chambre moderne</h2>
+        <p>Notre mission est de cr&eacute;er un linge de lit qui relie le confort d'aujourd'hui &agrave; la richesse textile africaine. Avec Aliagui Home, le drap en pagne devient une pi&egrave;ce forte, intime et facile &agrave; vivre.</p>
       </div>
 
       <button class="bed-photo story-trigger" type="button" data-story="home" aria-label="Voir la vision maison moderne">
@@ -2045,7 +2045,7 @@
     </section>
   </main>
 
-  <button class="whatsapp-link" type="button" aria-label="Contact us on WhatsApp" aria-expanded="false">
+  <button class="whatsapp-link" type="button" aria-label="Nous contacter sur WhatsApp" aria-expanded="false">
     <svg width="25" height="25" viewBox="0 0 24 24" aria-hidden="true">
       <path fill="currentColor" d="M5 5h14v10H8.8L5 18.5V5Zm2 2v6.9l1-.9h9V7H7Z"/>
     </svg>
@@ -2070,12 +2070,12 @@
     <div class="footer-inner">
       <div class="footer-columns">
         <div class="footer-brand">
-          <a href="acceuil.html">ALIAGUI HOME</a>
-          <p>Le patrimoine textile africain r&eacute;interpr&eacute;t&eacute;.</p>
+          <a href="index.html">ALIAGUI HOME</a>
+          <p>Draps en pagne et linge de lit inspir&eacute;s du patrimoine textile africain.</p>
         </div>
 
         <nav class="footer-column" aria-label="Explorer">
-          <h2>Explore</h2>
+          <h2>Explorer</h2>
           <ul>
             <li><a href="collections.html">Collections</a></li>
             <li><a href="histoire.html">Notre Histoire</a></li>
@@ -2084,22 +2084,26 @@
         </nav>
 
         <nav class="footer-column" aria-label="R&eacute;seaux sociaux">
-          <h2>R&eacute;seaux</h2>
-          <ul class="social-list">
-            <li><a href="#">
-              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7h2.3l.4-3h-2.7V9.1c0-.9.2-1.5 1.5-1.5h1.3V4.9c-.6-.1-1.4-.2-2.4-.2-2.4 0-4 1.5-4 4.1V11H7.5v3h2.4v7h3.6Z"/></svg>
-              Facebook
-            </a></li>
-            <li><a href="#">
-              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7h2.3l.4-3h-2.7V9.1c0-.9.2-1.5 1.5-1.5h1.3V4.9c-.6-.1-1.4-.2-2.4-.2-2.4 0-4 1.5-4 4.1V11H7.5v3h2.4v7h3.6Z"/></svg>
-              Facebook
-            </a></li>
-            <li><a href="#">
+        <h2>R&eacute;seaux</h2>
+        <ul class="social-list">
+            <li><a href="#" aria-label="TikTok">
               <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.2 4.1c.5 1.5 1.6 2.7 3.1 3.2v3.1c-1.1 0-2.2-.3-3.1-.9v5.6a5.4 5.4 0 1 1-5.4-5.4h.8v3.2a2.2 2.2 0 1 0 1.5 2.1V4.1h3.1Z"/></svg>
-              Tiktok
+              TikTok
             </a></li>
-          </ul>
-        </nav>
+            <li><a href="#" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4Zm0 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H8Zm4 3.2a2.8 2.8 0 1 1 0 5.6 2.8 2.8 0 0 1 0-5.6Zm0 2a.8.8 0 1 0 0 1.6.8.8 0 0 0 0-1.6Zm4.2-2.7a.8.8 0 1 1-1.6 0 .8.8 0 0 1 1.6 0Z"/></svg>
+              Instagram
+            </a></li>
+            <li><a href="#" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7h2.3l.4-3h-2.7V9.1c0-.9.2-1.5 1.5-1.5h1.3V4.9c-.6-.1-1.4-.2-2.4-.2-2.4 0-4 1.5-4 4.1V11H7.5v3h2.4v7h3.6Z"/></svg>
+              Facebook
+            </a></li>
+            <li><a href="#" aria-label="WhatsApp">
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.5a8.1 8.1 0 0 1 6.9 12.3l.9 4.2-4.3-.9A8.1 8.1 0 0 1 3.9 8.1 8.1 8.1 0 0 1 12 3.5Zm0 1.8a6.3 6.3 0 0 0-5.4 9.5l.2.3-.5 2.4 2.5-.5.3.2A6.3 6.3 0 1 0 12 5.3Zm-2.4 3c.2 0 .4 0 .5.4l.5 1.2c.1.2.1.4 0 .5l-.4.5c-.1.1-.2.2-.1.4.4.8 1.1 1.5 1.9 1.9.2.1.3.1.4-.1l.6-.7c.1-.2.3-.2.5-.1l1.3.6c.2.1.4.2.4.4 0 .5-.4 1.1-.8 1.3-.4.2-1.2.4-2.7-.2-1.8-.8-3-2.4-3.1-2.6-.1-.1-.8-1.1-.8-2.1s.5-1.5.7-1.7c.2-.2.4-.2.6-.2Z"/></svg>
+              WhatsApp
+            </a></li>
+        </ul>
+      </nav>
 
         <section class="newsletter" aria-label="Newsletter">
           <h2>Newsletter</h2>
@@ -2140,22 +2144,22 @@
   <script>
     const storyDetails = {
       origins: {
-        title: "The Origins of Pagne",
-        text: "A textile becomes precious when it carries memory. These motifs are not decoration alone; they are a living language translated into the quiet intimacy of the home."
+        title: "L'origine du drap en pagne",
+        text: "Un textile devient pr&eacute;cieux lorsqu'il garde une m&eacute;moire. Dans nos draps en pagne, le motif n'est pas seulement d&eacute;coratif : il accompagne la chambre et les rituels du quotidien."
       },
       weavers: {
-        title: "The Master Weavers",
-        text: "Each collection begins with human rhythm: hands, patience, and inherited technique. Our slow production model protects craft while keeping every piece deliberate."
+        title: "Des tissus choisis pour le sommeil",
+        text: "Chaque collection commence par la mati&egrave;re : un toucher doux, un pagne expressif, puis des finitions solides pour que la parure reste belle dans l'usage."
       },
       home: {
-        title: "Ethnic Luxury for the Modern Home",
-        text: "The final expression is serene and contemporary: a bedroom that feels refined, grounded, and connected to a wider cultural story."
+        title: "Le pagne dans la chambre moderne",
+        text: "La chambre devient plus personnelle : un lit confortable, des couleurs qui parlent, et un drap en pagne qui relie la maison &agrave; une histoire plus grande."
       }
     };
 
     const cartItems = [
-      { name: "Parure Nuit &Eacute;toil&eacute;e", price: "285 &euro;" },
-      { name: "Parure Aube Douce", price: "320 &euro;" }
+      { name: "Parure Soleil Abstrait", price: "185 000 FCFA" },
+      { name: "Parure &Eacute;pure Verte", price: "210 000 FCFA" }
     ];
 
     const backdrop = document.querySelector(".backdrop");

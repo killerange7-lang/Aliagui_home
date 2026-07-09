@@ -4,6 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Collections - Aliagui Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --navy: #182442;
@@ -18,8 +21,8 @@
       --badge-text: #8c6d5f;
       --gold: #ca8a04;
       --green: #2ecc71;
-      --sans: "Nimbus Sans", Arial, Helvetica, sans-serif;
-      --serif: "Liberation Serif", Georgia, "Times New Roman", serif;
+      --sans: "Poppins", Arial, Helvetica, sans-serif;
+      --serif: "Calisto MT", "Bookman Old Style", Georgia, "Times New Roman", serif;
     }
 
     * {
@@ -352,6 +355,7 @@
       width: 100%;
       margin: 0;
       color: #000000;
+      font-family: var(--serif);
       font-size: 60px;
       font-weight: 700;
       line-height: 60px;
@@ -526,14 +530,15 @@
       display: grid;
       grid-template-columns: repeat(3, 272px);
       column-gap: 32px;
-      row-gap: 48px;
+      row-gap: 64px;
       align-content: start;
       position: relative;
     }
 
     .product-card {
       width: 272px;
-      height: 460px;
+      min-height: 504px;
+      height: auto;
       padding: 0;
       border: 0;
       background: transparent;
@@ -566,10 +571,29 @@
       background: var(--cool);
     }
 
+    .product-image {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1);
+      transition: transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .product-card:hover .product-image,
+    .product-card:focus-visible .product-image {
+      transform: scale(1.08);
+    }
+
     .product-visual::before {
       content: "";
       position: absolute;
       inset: 0;
+      z-index: 1;
       background: linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.35) 48%, transparent 70%);
       opacity: 0;
       transform: translateX(-100%);
@@ -594,6 +618,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      z-index: 2;
       font-size: 10px;
       font-weight: 700;
       line-height: 15px;
@@ -603,7 +628,8 @@
 
     .product-copy {
       width: 272px;
-      min-height: 96px;
+      min-height: 148px;
+      padding-top: 28px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -613,23 +639,27 @@
 
     .product-copy h3 {
       width: 100%;
-      min-height: 32px;
+      min-height: 60px;
       margin: 0;
       color: #000000;
       font-family: var(--serif);
-      font-size: 24px;
+      font-size: 23px;
       font-weight: 400;
-      line-height: 32px;
+      line-height: 30px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      text-wrap: balance;
     }
 
     .product-copy p {
       width: 100%;
-      min-height: 20px;
+      min-height: 22px;
       margin: 0;
       color: var(--soft);
       font-size: 14px;
       font-weight: 400;
-      line-height: 20px;
+      line-height: 22px;
     }
 
     .product-copy .price {
@@ -810,8 +840,8 @@
 
     .site-footer {
       width: 100%;
-      height: 290px;
-      padding: 52px 48px 0;
+      height: 318px;
+      padding: 52px 48px 36px;
       background: var(--navy);
       color: #ffffff;
     }
@@ -819,11 +849,11 @@
     .footer-inner {
       width: 100%;
       max-width: 1184px;
-      height: 208px;
+      min-height: 226px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 26px;
+      gap: 34px;
     }
 
     .footer-columns {
@@ -983,11 +1013,11 @@
 
     .footer-bottom {
       width: 100%;
-      height: 38px;
-      padding-top: 21px;
+      min-height: 48px;
+      padding-top: 30px;
       border-top: 1px solid #1f2937;
       display: flex;
-      align-items: flex-end;
+      align-items: flex-start;
       justify-content: center;
     }
 
@@ -1059,10 +1089,19 @@
       height: 210px;
       margin-bottom: 22px;
       background: var(--warm);
+      overflow: hidden;
     }
 
     .modal-visual.cool {
       background: var(--cool);
+    }
+
+    .modal-visual img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
     }
 
     .product-modal h2,
@@ -1776,7 +1815,7 @@
 <body>
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="brand" href="acceuil.html" aria-label="Aliagui Home">
+      <a class="brand" href="index.html" aria-label="Aliagui Home">
         <img src="img/logo.png" alt="Aliagui Home">
       </a>
 
@@ -1794,7 +1833,7 @@
           </div>
           <button class="menu-close" type="button" aria-label="Fermer la navigation"></button>
         </div>
-        <a href="acceuil.html">Accueil</a>
+        <a href="index.html">Accueil</a>
         <a href="collections.html" aria-current="page">Collections</a>
         <a href="histoire.html">Histoire</a>
         <a href="showroom.html">Showroom</a>
@@ -1818,7 +1857,7 @@
         <a class="service-link" href="contact.html">Service Client</a>
 
         <div class="search-popover" role="search">
-          <input id="search-input" type="search" placeholder="Rechercher une parure" autocomplete="off">
+          <input id="search-input" type="search" placeholder="Rechercher un drap en pagne" autocomplete="off">
         </div>
       </div>
     </div>
@@ -1826,9 +1865,9 @@
 
   <main class="collection-main">
     <section class="page-header" aria-labelledby="page-title">
-      <p class="eyebrow">Heritage &amp; Craft</p>
-      <h1 id="page-title">Nos Collections</h1>
-      <p>Explorez notre s&eacute;lection de parures de lit haut de gamme, o&ugrave; le savoir-faire artisanal ouest-africain rencontre le luxe contemporain.</p>
+      <p class="eyebrow">Draps en pagne</p>
+      <h1 id="page-title">Nos draps en pagne</h1>
+      <p>Choisissez une parure de lit en pagne pens&eacute;e pour la douceur du quotidien, avec des finitions premium et des dimensions adapt&eacute;es &agrave; votre chambre.</p>
     </section>
 
     <section class="catalog-layout" aria-label="Catalogue des collections">
@@ -1836,33 +1875,25 @@
         <section class="filter-section">
           <h2>Cat&eacute;gories</h2>
           <ul class="category-list">
-            <li><a class="is-active" href="#" data-category="all" aria-current="true"><span>Toutes les Collections</span></a></li>
-            <li><a href="#" data-category="drap"><span>Drap</span></a></li>
-            <li><a href="#" data-category="coussin"><span>Coussin</span></a></li>
-          </ul>
-        </section>
-
-        <section class="filter-section">
-          <h2>Motifs</h2>
-          <ul class="check-list">
-            <li><label><input type="checkbox" data-filter-group="motif" data-filter-value="geometrique"> G&eacute;om&eacute;trique</label></li>
-            <li><label><input type="checkbox" data-filter-group="motif" data-filter-value="floral"> Floral Abstrait</label></li>
-            <li><label><input type="checkbox" data-filter-group="motif" data-filter-value="minimaliste"> Minimaliste</label></li>
+            <li><a class="is-active" href="#" data-category="all" aria-current="true"><span>Toutes les parures</span></a></li>
+            <li><a href="#" data-category="drap"><span>Draps en pagne</span></a></li>
+            <li><a href="#" data-category="coussin"><span>Coussins assortis</span></a></li>
           </ul>
         </section>
 
         <section class="filter-section dimensions">
           <h2>Dimensions</h2>
           <ul class="check-list">
-            <li><label><input type="checkbox" data-filter-group="size" data-filter-value="queen"> Queen (240x220)</label></li>
-            <li><label><input type="checkbox" data-filter-group="size" data-filter-value="king"> King (260x240)</label></li>
+            <li><label><input type="checkbox" data-filter-group="size" data-filter-value="2-places"> 2 places</label></li>
+            <li><label><input type="checkbox" data-filter-group="size" data-filter-value="3-places"> 3 places</label></li>
+            <li><label><input type="checkbox" data-filter-group="size" data-filter-value="4-places"> 4 places</label></li>
           </ul>
         </section>
       </aside>
 
       <div class="product-area">
         <div class="product-grid" id="product-grid" aria-live="polite"></div>
-        <div class="no-results" id="no-results">Aucune collection ne correspond &agrave; votre s&eacute;lection.</div>
+        <div class="no-results" id="no-results">Aucun drap en pagne ne correspond &agrave; votre s&eacute;lection.</div>
 
         <nav class="pagination" aria-label="Pagination des collections">
           <div class="pagination-status" id="pagination-status">PAGE 1 SUR 4</div>
@@ -1913,12 +1944,12 @@
     <div class="footer-inner">
       <div class="footer-columns">
         <div class="footer-brand">
-          <a href="acceuil.html">ALIAGUI HOME</a>
-          <p>Le patrimoine textile africain r&eacute;interpr&eacute;t&eacute;.</p>
+          <a href="index.html">ALIAGUI HOME</a>
+          <p>Draps en pagne et linge de lit inspir&eacute;s du patrimoine textile africain.</p>
         </div>
 
         <nav class="footer-column" aria-label="Explorer">
-          <h2>Explore</h2>
+          <h2>Explorer</h2>
           <ul>
             <li><a href="collections.html">Collections</a></li>
             <li><a href="histoire.html">Notre Histoire</a></li>
@@ -1929,17 +1960,21 @@
         <nav class="footer-column" aria-label="R&eacute;seaux sociaux">
           <h2>R&eacute;seaux</h2>
           <ul class="social-list">
-            <li><a href="#" aria-label="Facebook">
-              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7h2.3l.4-3h-2.7V9.1c0-.9.2-1.5 1.5-1.5h1.3V4.9c-.6-.1-1.4-.2-2.4-.2-2.4 0-4 1.5-4 4.1V11H7.5v3h2.4v7h3.6Z"/></svg>
-              Facebook
-            </a></li>
-            <li><a href="#" aria-label="Facebook">
-              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7h2.3l.4-3h-2.7V9.1c0-.9.2-1.5 1.5-1.5h1.3V4.9c-.6-.1-1.4-.2-2.4-.2-2.4 0-4 1.5-4 4.1V11H7.5v3h2.4v7h3.6Z"/></svg>
-              Facebook
-            </a></li>
-            <li><a href="#" aria-label="Tiktok">
+            <li><a href="#" aria-label="TikTok">
               <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.2 4.1c.5 1.5 1.6 2.7 3.1 3.2v3.1c-1.1 0-2.2-.3-3.1-.9v5.6a5.4 5.4 0 1 1-5.4-5.4h.8v3.2a2.2 2.2 0 1 0 1.5 2.1V4.1h3.1Z"/></svg>
-              Tiktok
+              TikTok
+            </a></li>
+            <li><a href="#" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4Zm0 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H8Zm4 3.2a2.8 2.8 0 1 1 0 5.6 2.8 2.8 0 0 1 0-5.6Zm0 2a.8.8 0 1 0 0 1.6.8.8 0 0 0 0-1.6Zm4.2-2.7a.8.8 0 1 1-1.6 0 .8.8 0 0 1 1.6 0Z"/></svg>
+              Instagram
+            </a></li>
+            <li><a href="#" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7h2.3l.4-3h-2.7V9.1c0-.9.2-1.5 1.5-1.5h1.3V4.9c-.6-.1-1.4-.2-2.4-.2-2.4 0-4 1.5-4 4.1V11H7.5v3h2.4v7h3.6Z"/></svg>
+              Facebook
+            </a></li>
+            <li><a href="#" aria-label="WhatsApp">
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.5a8.1 8.1 0 0 1 6.9 12.3l.9 4.2-4.3-.9A8.1 8.1 0 0 1 3.9 8.1 8.1 8.1 0 0 1 12 3.5Zm0 1.8a6.3 6.3 0 0 0-5.4 9.5l.2.3-.5 2.4 2.5-.5.3.2A6.3 6.3 0 1 0 12 5.3Zm-2.4 3c.2 0 .4 0 .5.4l.5 1.2c.1.2.1.4 0 .5l-.4.5c-.1.1-.2.2-.1.4.4.8 1.1 1.5 1.9 1.9.2.1.3.1.4-.1l.6-.7c.1-.2.3-.2.5-.1l1.3.6c.2.1.4.2.4.4 0 .5-.4 1.1-.8 1.3-.4.2-1.2.4-2.7-.2-1.8-.8-3-2.4-3.1-2.6-.1-.1-.8-1.1-.8-2.1s.5-1.5.7-1.7c.2-.2.4-.2.6-.2Z"/></svg>
+              WhatsApp
             </a></li>
           </ul>
         </nav>
@@ -1986,28 +2021,28 @@
   <script>
     const pages = {
       "1": [
-        { id: "nuit", name: "Parure Nuit &Eacute;toil&eacute;e", material: "Coton Percale, 300 fils", price: "285 &euro;", badge: "Signature", category: "drap", motif: "geometrique", size: "queen", tone: "cool" },
-        { id: "aube", name: "Parure Aube Douce", material: "Satin de Coton, 400 fils", price: "320 &euro;", badge: "Heritage", category: "drap", motif: "floral", size: "king", tone: "warm" },
-        { id: "zenith", name: "Parure Z&eacute;nith", material: "Coton Percale Bio", price: "260 &euro;", badge: "", category: "coussin", motif: "minimaliste", size: "queen", tone: "warm" },
-        { id: "indigo", name: "Parure Indigo Rive", material: "Lin Lav&eacute; Premium", price: "350 &euro;", badge: "Saisonni&egrave;re", category: "drap", motif: "geometrique", size: "king", tone: "warm" }
+        { id: "nuit", name: "Parure Soleil Abstrait", material: "Coton percale, motif pagne abstrait, 2 places", price: "185 000 FCFA", badge: "Abstrait", category: "drap", size: "2-places", tone: "cool", image: "img/WhatsApp Image 2026-07-08 at 10.43.07.jpeg" },
+        { id: "aube", name: "Parure &Eacute;pure Verte", material: "Satin de coton, motif g&eacute;om&eacute;trique, 3 places", price: "210 000 FCFA", badge: "G&eacute;om&eacute;trique", category: "drap", size: "3-places", tone: "warm", image: "img/WhatsApp Image 2026-07-08 at 10.43.07 (1).jpeg" },
+        { id: "zenith", name: "Parure Bogolan Miel", material: "Coton bio, motif bogolan, 2 places", price: "170 000 FCFA", badge: "Bogolan", category: "drap", size: "2-places", tone: "warm", image: "img/WhatsApp Image 2026-07-08 at 10.43.07 (2).jpeg" },
+        { id: "indigo", name: "Parure Terre Nomade", material: "Lin lav&eacute;, motif terre cuite, 4 places", price: "230 000 FCFA", badge: "Terre cuite", category: "drap", size: "4-places", tone: "warm", image: "img/WhatsApp Image 2026-07-08 at 10.43.08.jpeg" }
       ],
       "2": [
-        { id: "sable", name: "Parure Sable Dor&eacute;", material: "Voile de Coton Luxe", price: "295 &euro;", badge: "Nouveau", category: "coussin", motif: "floral", size: "queen", tone: "warm" },
-        { id: "brume", name: "Parure Brume Royale", material: "Satin Lav&eacute;, 500 fils", price: "390 &euro;", badge: "Limit&eacute;e", category: "drap", motif: "minimaliste", size: "king", tone: "cool" },
-        { id: "ivoire", name: "Parure Ivoire Calme", material: "Percale Souple", price: "275 &euro;", badge: "", category: "drap", motif: "minimaliste", size: "queen", tone: "warm" },
-        { id: "terra", name: "Parure Terra Kente", material: "Coton Peign&eacute;", price: "335 &euro;", badge: "Atelier", category: "coussin", motif: "geometrique", size: "king", tone: "warm" }
+        { id: "sable", name: "Coussins Sable Dor&eacute;", material: "Voile de coton assorti, 2 places", price: "195 000 FCFA", badge: "Coussins", category: "coussin", size: "2-places", tone: "warm" },
+        { id: "brume", name: "Drap Brume Royale", material: "Satin lav&eacute;, finition premium, 4 places", price: "255 000 FCFA", badge: "Satin lav&eacute;", category: "drap", size: "4-places", tone: "cool" },
+        { id: "ivoire", name: "Parure Ivoire Calme", material: "Percale souple, ambiance claire, 3 places", price: "180 000 FCFA", badge: "Percale", category: "drap", size: "3-places", tone: "warm" },
+        { id: "terra", name: "Coussins Terra Kente", material: "Coton peign&eacute;, motifs kente, 4 places", price: "220 000 FCFA", badge: "Kente", category: "coussin", size: "4-places", tone: "warm" }
       ],
       "3": [
-        { id: "opaline", name: "Parure Opaline", material: "Satin de Coton", price: "310 &euro;", badge: "Douceur", category: "drap", motif: "floral", size: "queen", tone: "cool" },
-        { id: "nacre", name: "Parure Nacre", material: "Coton Bio Lav&eacute;", price: "280 &euro;", badge: "", category: "coussin", motif: "minimaliste", size: "queen", tone: "warm" },
-        { id: "lagune", name: "Parure Lagune", material: "Lin et Coton", price: "360 &euro;", badge: "Heritage", category: "drap", motif: "geometrique", size: "king", tone: "warm" },
-        { id: "safran", name: "Parure Safran", material: "Percale Premium", price: "305 &euro;", badge: "Signature", category: "drap", motif: "floral", size: "king", tone: "warm" }
+        { id: "opaline", name: "Drap Opaline", material: "Satin de coton, toucher frais, 2 places", price: "205 000 FCFA", badge: "Satin", category: "drap", size: "2-places", tone: "cool" },
+        { id: "nacre", name: "Coussins Nacre", material: "Coton bio lav&eacute;, 3 places", price: "185 000 FCFA", badge: "Coton bio", category: "coussin", size: "3-places", tone: "warm" },
+        { id: "lagune", name: "Parure Lagune", material: "Lin et coton, motif pagne doux, 4 places", price: "235 000 FCFA", badge: "Lin coton", category: "drap", size: "4-places", tone: "warm" },
+        { id: "safran", name: "Drap Safran", material: "Percale premium, nuance chaude, 3 places", price: "200 000 FCFA", badge: "Safran", category: "drap", size: "3-places", tone: "warm" }
       ],
       "8": [
-        { id: "celeste", name: "Parure C&eacute;leste", material: "Coton Percale", price: "270 &euro;", badge: "", category: "drap", motif: "minimaliste", size: "queen", tone: "cool" },
-        { id: "ebene", name: "Parure &Eacute;b&egrave;ne", material: "Satin Profond", price: "410 &euro;", badge: "Rare", category: "drap", motif: "geometrique", size: "king", tone: "warm" },
-        { id: "lilas", name: "Parure Lilas", material: "Coton Peign&eacute;", price: "298 &euro;", badge: "Nouveau", category: "coussin", motif: "floral", size: "queen", tone: "warm" },
-        { id: "kumasi", name: "Parure Kumasi", material: "Lin Lav&eacute;", price: "365 &euro;", badge: "Atelier", category: "drap", motif: "geometrique", size: "king", tone: "warm" }
+        { id: "celeste", name: "Drap C&eacute;leste", material: "Coton percale, motif a&eacute;rien, 2 places", price: "175 000 FCFA", badge: "C&eacute;leste", category: "drap", size: "2-places", tone: "cool" },
+        { id: "ebene", name: "Parure &Eacute;b&egrave;ne", material: "Satin profond, chambre prestige, 4 places", price: "270 000 FCFA", badge: "&Eacute;b&egrave;ne", category: "drap", size: "4-places", tone: "warm" },
+        { id: "lilas", name: "Coussins Lilas", material: "Coton peign&eacute; assorti, 3 places", price: "195 000 FCFA", badge: "Lilas", category: "coussin", size: "3-places", tone: "warm" },
+        { id: "kumasi", name: "Drap Kumasi", material: "Lin lav&eacute;, motif inspir&eacute; pagne, 4 places", price: "240 000 FCFA", badge: "Kumasi", category: "drap", size: "4-places", tone: "warm" }
       ]
     };
 
@@ -2034,8 +2069,8 @@
     const cartList = document.querySelector(".cart-list");
     const cartSummary = document.querySelector(".cart-summary");
     const cartItems = [
-      { name: "Parure Nuit &Eacute;toil&eacute;e", price: "285 &euro;" },
-      { name: "Parure Aube Douce", price: "320 &euro;" }
+      { name: "Parure Soleil Abstrait", price: "185 000 FCFA" },
+      { name: "Parure &Eacute;pure Verte", price: "210 000 FCFA" }
     ];
 
     let currentPage = "1";
@@ -2097,13 +2132,13 @@
         card.type = "button";
         card.className = "product-card";
         card.dataset.category = product.category;
-        card.dataset.motif = product.motif;
         card.dataset.size = product.size;
         card.dataset.search = `${textFromHtml(product.name)} ${product.material}`.toLowerCase();
         card.dataset.productId = product.id;
         card.setAttribute("aria-label", `Voir ${textFromHtml(product.name)}`);
         card.innerHTML = `
           <span class="product-visual ${product.tone === "cool" ? "cool" : ""}">
+            ${product.image ? `<img class="product-image" src="${product.image}" alt="${textFromHtml(product.name)}" loading="lazy">` : ""}
             ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ""}
           </span>
           <span class="product-copy">
@@ -2119,17 +2154,15 @@
     }
 
     function applyFilters() {
-      const motifs = currentFilters("motif");
       const sizes = currentFilters("size");
       const query = searchInput.value.trim().toLowerCase();
       let visible = 0;
 
       Array.from(productGrid.children).forEach((card) => {
         const categoryMatch = activeCategory === "all" || card.dataset.category === activeCategory;
-        const motifMatch = motifs.length === 0 || motifs.includes(card.dataset.motif);
         const sizeMatch = sizes.length === 0 || sizes.includes(card.dataset.size);
         const searchMatch = query === "" || card.dataset.search.includes(query);
-        const show = categoryMatch && motifMatch && sizeMatch && searchMatch;
+        const show = categoryMatch && sizeMatch && searchMatch;
         card.classList.toggle("is-hidden", !show);
         if (show) visible += 1;
       });
@@ -2185,7 +2218,11 @@
     function openProduct(product) {
       closeMenu();
       activeProduct = product;
-      modal.querySelector(".modal-visual").classList.toggle("cool", product.tone === "cool");
+      const modalVisual = modal.querySelector(".modal-visual");
+      modalVisual.classList.toggle("cool", product.tone === "cool");
+      modalVisual.innerHTML = product.image
+        ? `<img src="${product.image}" alt="${textFromHtml(product.name)}">`
+        : "";
       modal.querySelector("#modal-title").innerHTML = product.name;
       modal.querySelector(".modal-material").innerHTML = product.material;
       modal.querySelector(".modal-price").innerHTML = product.price;

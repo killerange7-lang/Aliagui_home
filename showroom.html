@@ -4,6 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Showroom - Aliagui Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --navy: #182442;
@@ -16,8 +19,8 @@
       --gold: #ca8a04;
       --badge-bg: #eadfd8;
       --badge-text: #8c6d5f;
-      --sans: "Nimbus Sans", Arial, Helvetica, sans-serif;
-      --serif: "Liberation Serif", Georgia, "Times New Roman", serif;
+      --sans: "Poppins", Arial, Helvetica, sans-serif;
+      --serif: "Calisto MT", "Bookman Old Style", Georgia, "Times New Roman", serif;
     }
 
     * {
@@ -492,8 +495,8 @@
 
     .site-footer {
       width: 100%;
-      height: 290px;
-      padding: 52px 48px 0;
+      height: 318px;
+      padding: 52px 48px 36px;
       background: var(--navy);
       display: flex;
       flex-direction: column;
@@ -503,11 +506,11 @@
     .footer-inner {
       width: 1184px;
       max-width: 100%;
-      height: 208px;
+      min-height: 226px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 26px;
+      gap: 34px;
     }
 
     .footer-columns {
@@ -674,8 +677,8 @@
     .footer-bottom {
       width: 1184px;
       max-width: 100%;
-      min-height: 38px;
-      padding-top: 20px;
+      min-height: 48px;
+      padding-top: 30px;
       border-top: 1px solid rgba(31, 41, 55, 0.86);
       display: flex;
       justify-content: center;
@@ -1298,7 +1301,7 @@
 <body>
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="brand" href="acceuil.html" aria-label="Aliagui Home">
+      <a class="brand" href="index.html" aria-label="Aliagui Home">
         <img src="img/logo.png" alt="Aliagui Home">
       </a>
 
@@ -1316,7 +1319,7 @@
           </div>
           <button class="menu-close" type="button" aria-label="Fermer la navigation"></button>
         </div>
-        <a href="acceuil.html">Accueil</a>
+        <a href="index.html">Accueil</a>
         <a href="collections.html">Collections</a>
         <a href="histoire.html">Histoire</a>
         <a href="showroom.html" aria-current="page">Showroom</a>
@@ -1340,7 +1343,7 @@
         <a class="service-link" href="contact.html">Service Client</a>
 
         <div class="search-popover" role="search">
-          <input id="search-input" type="search" placeholder="Rechercher un espace" autocomplete="off">
+          <input id="search-input" type="search" placeholder="Rechercher une ambiance" autocomplete="off">
         </div>
       </div>
     </div>
@@ -1348,33 +1351,33 @@
 
   <main class="showroom-main">
     <section class="showroom-hero" aria-labelledby="showroom-title">
-      <p class="eyebrow">Heritage &amp; Craft</p>
-      <h1 id="showroom-title">Le Showroom</h1>
-      <p>A curated gallery of spaces elevated by our hand-woven heritage. Find inspiration in the convergence of traditional pagne artistry and contemporary luxury interior design.</p>
+      <p class="eyebrow">Draps en pagne</p>
+      <h1 id="showroom-title">Inspirations chambre</h1>
+      <p>D&eacute;couvrez des ambiances o&ugrave; le drap en pagne transforme le lit en pi&egrave;ce centrale : chaleureux, moderne, doux et profond&eacute;ment personnel.</p>
     </section>
 
     <section class="gallery-wrap" aria-label="Galerie showroom">
       <div class="showroom-grid" id="showroom-grid">
-        <button class="showroom-card" type="button" data-title="Modern Minimalist Bedroom" data-detail="A calm bedroom study where woven heritage meets precise contemporary lines." data-search="modern minimalist bedroom heritage contemporary calm">
-          <span class="card-overlay"><span>Modern Minimalist Bedroom</span></span>
+        <button class="showroom-card" type="button" data-title="Chambre minimaliste en pagne" data-detail="Une chambre calme o&ugrave; le drap en pagne apporte du relief sans alourdir l'espace." data-search="chambre minimaliste drap pagne contemporain calme">
+          <span class="card-overlay"><span>Chambre minimaliste en pagne</span></span>
         </button>
-        <button class="showroom-card" type="button" data-title="Fabric Detail" data-detail="A close look at the tactile weave, soft structure, and quiet pattern language of the textile." data-search="fabric detail textile weave close up pattern">
-          <span class="card-overlay"><span>Fabric Detail</span></span>
+        <button class="showroom-card" type="button" data-title="D&eacute;tail du tissu" data-detail="Un regard rapproch&eacute; sur la texture, le tomb&eacute; et les nuances du pagne utilis&eacute; pour le linge de lit." data-search="detail tissu pagne texture drap linge lit">
+          <span class="card-overlay"><span>D&eacute;tail du tissu</span></span>
         </button>
-        <button class="showroom-card" type="button" data-title="Warm Traditional Bedroom" data-detail="A warm interior mood that frames pagne-inspired bedding with serene, modern restraint." data-search="warm traditional bedroom pagne bedding interior">
-          <span class="card-overlay"><span>Warm Traditional Bedroom</span></span>
+        <button class="showroom-card" type="button" data-title="Chambre chaleureuse" data-detail="Une atmosph&egrave;re douce o&ugrave; les couleurs du pagne r&eacute;chauffent le lit et la pi&egrave;ce." data-search="chambre chaleureuse pagne drap couleur interieur">
+          <span class="card-overlay"><span>Chambre chaleureuse</span></span>
         </button>
-        <button class="showroom-card" type="button" data-title="Sunlit Loft Bedroom" data-detail="Soft daylight, clean proportions, and artisanal texture arranged for a lighter suite." data-search="sunlit loft bedroom daylight artisanal texture">
-          <span class="card-overlay"><span>Sunlit Loft Bedroom</span></span>
+        <button class="showroom-card" type="button" data-title="Suite lumineuse" data-detail="Une parure claire qui laisse respirer le motif et garde une sensation de fra&icirc;cheur." data-search="suite lumineuse drap pagne clair fraicheur">
+          <span class="card-overlay"><span>Suite lumineuse</span></span>
         </button>
-        <button class="showroom-card" type="button" data-title="Folded Linens" data-detail="A composed linen stack that highlights finish, edge detail, and layered material depth." data-search="folded linens linen stack material detail">
-          <span class="card-overlay"><span>Folded Linens</span></span>
+        <button class="showroom-card" type="button" data-title="Draps pli&eacute;s" data-detail="Des finitions nettes et une mati&egrave;re souple, pr&ecirc;tes &agrave; habiller le lit au quotidien." data-search="draps plies pagne finitions linge lit">
+          <span class="card-overlay"><span>Draps pli&eacute;s</span></span>
         </button>
-        <button class="showroom-card" type="button" data-title="Dark Moody Bedroom" data-detail="A deeper, enveloping room concept using contrast, indigo, and soft shadow." data-search="dark moody bedroom indigo contrast luxury">
-          <span class="card-overlay"><span>Dark Moody Bedroom</span></span>
+        <button class="showroom-card" type="button" data-title="Chambre indigo" data-detail="Une ambiance plus profonde, port&eacute;e par l'indigo, les contrastes et la douceur du textile." data-search="chambre indigo drap pagne contraste textile">
+          <span class="card-overlay"><span>Chambre indigo</span></span>
         </button>
       </div>
-      <div class="no-results" id="no-results">Aucun espace ne correspond &agrave; votre recherche.</div>
+      <div class="no-results" id="no-results">Aucune ambiance de chambre ne correspond &agrave; votre recherche.</div>
     </section>
   </main>
 
@@ -1382,12 +1385,12 @@
     <div class="footer-inner">
       <div class="footer-columns">
         <div class="footer-brand">
-          <a href="acceuil.html">ALIAGUI HOME</a>
-          <p>Le patrimoine textile africain r&eacute;interpr&eacute;t&eacute;.</p>
+          <a href="index.html">ALIAGUI HOME</a>
+          <p>Draps en pagne et linge de lit inspir&eacute;s du patrimoine textile africain.</p>
         </div>
 
         <nav class="footer-column" aria-label="Explorer">
-          <h2>Explore</h2>
+          <h2>Explorer</h2>
           <ul>
             <li><a href="collections.html">Collections</a></li>
             <li><a href="histoire.html">Notre Histoire</a></li>
@@ -1396,22 +1399,26 @@
         </nav>
 
         <nav class="footer-column" aria-label="R&eacute;seaux sociaux">
-          <h2>R&eacute;seaux</h2>
-          <ul class="social-list">
-            <li><a href="#" aria-label="Facebook">
-              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7h2.3l.4-3h-2.7V9.1c0-.9.2-1.5 1.5-1.5h1.3V4.9c-.6-.1-1.4-.2-2.4-.2-2.4 0-4 1.5-4 4.1V11H7.5v3h2.4v7h3.6Z"/></svg>
-              Facebook
-            </a></li>
-            <li><a href="#" aria-label="Facebook">
-              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7h2.3l.4-3h-2.7V9.1c0-.9.2-1.5 1.5-1.5h1.3V4.9c-.6-.1-1.4-.2-2.4-.2-2.4 0-4 1.5-4 4.1V11H7.5v3h2.4v7h3.6Z"/></svg>
-              Facebook
-            </a></li>
-            <li><a href="#" aria-label="Tiktok">
+        <h2>R&eacute;seaux</h2>
+        <ul class="social-list">
+            <li><a href="#" aria-label="TikTok">
               <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.2 4.1c.5 1.5 1.6 2.7 3.1 3.2v3.1c-1.1 0-2.2-.3-3.1-.9v5.6a5.4 5.4 0 1 1-5.4-5.4h.8v3.2a2.2 2.2 0 1 0 1.5 2.1V4.1h3.1Z"/></svg>
-              Tiktok
+              TikTok
             </a></li>
-          </ul>
-        </nav>
+            <li><a href="#" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4Zm0 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H8Zm4 3.2a2.8 2.8 0 1 1 0 5.6 2.8 2.8 0 0 1 0-5.6Zm0 2a.8.8 0 1 0 0 1.6.8.8 0 0 0 0-1.6Zm4.2-2.7a.8.8 0 1 1-1.6 0 .8.8 0 0 1 1.6 0Z"/></svg>
+              Instagram
+            </a></li>
+            <li><a href="#" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7h2.3l.4-3h-2.7V9.1c0-.9.2-1.5 1.5-1.5h1.3V4.9c-.6-.1-1.4-.2-2.4-.2-2.4 0-4 1.5-4 4.1V11H7.5v3h2.4v7h3.6Z"/></svg>
+              Facebook
+            </a></li>
+            <li><a href="#" aria-label="WhatsApp">
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.5a8.1 8.1 0 0 1 6.9 12.3l.9 4.2-4.3-.9A8.1 8.1 0 0 1 3.9 8.1 8.1 8.1 0 0 1 12 3.5Zm0 1.8a6.3 6.3 0 0 0-5.4 9.5l.2.3-.5 2.4 2.5-.5.3.2A6.3 6.3 0 1 0 12 5.3Zm-2.4 3c.2 0 .4 0 .5.4l.5 1.2c.1.2.1.4 0 .5l-.4.5c-.1.1-.2.2-.1.4.4.8 1.1 1.5 1.9 1.9.2.1.3.1.4-.1l.6-.7c.1-.2.3-.2.5-.1l1.3.6c.2.1.4.2.4.4 0 .5-.4 1.1-.8 1.3-.4.2-1.2.4-2.7-.2-1.8-.8-3-2.4-3.1-2.6-.1-.1-.8-1.1-.8-2.1s.5-1.5.7-1.7c.2-.2.4-.2.6-.2Z"/></svg>
+              WhatsApp
+            </a></li>
+        </ul>
+      </nav>
 
         <section class="newsletter" aria-label="Newsletter">
           <h2>Newsletter</h2>
@@ -1452,8 +1459,8 @@
 
   <script>
     const cartItems = [
-      { name: "Parure Nuit &Eacute;toil&eacute;e", price: "285 &euro;" },
-      { name: "Parure Aube Douce", price: "320 &euro;" }
+      { name: "Parure Soleil Abstrait", price: "185 000 FCFA" },
+      { name: "Parure &Eacute;pure Verte", price: "210 000 FCFA" }
     ];
 
     const searchToggle = document.querySelector(".search-toggle");

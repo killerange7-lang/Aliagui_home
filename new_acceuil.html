@@ -1,0 +1,2166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aliagui Home - Nouvelle Accueil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #fbf6ef;
+      --cream: #f4eadf;
+      --cream-2: #efe3d6;
+      --ink: #2d1e16;
+      --muted: #6f655d;
+      --white: #fffaf3;
+      --navy: #182442;
+      --olive: #303220;
+      --olive-soft: #3c4328;
+      --brown: #4d2b1e;
+      --brown-deep: #1e1713;
+      --copper: #9b603d;
+      --copper-soft: #c9916c;
+      --line: rgba(124, 83, 56, 0.22);
+      --shadow: 0 22px 70px rgba(48, 33, 24, 0.22);
+      --serif: "Calisto MT", "Bookman Old Style", Georgia, serif;
+      --sans: "Poppins", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+    }
+
+    body.is-locked {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    .promo-bar {
+      height: 31px;
+      padding: 0 52px;
+      background: var(--olive);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 1.55px;
+      text-transform: uppercase;
+    }
+
+    .promo-bar.is-hidden {
+      display: none;
+    }
+
+    body.promo-hidden {
+      --header-top: 0px;
+    }
+
+    .icon-button {
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      background: transparent;
+      color: currentColor;
+      display: inline-grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .promo-close {
+      position: absolute;
+      right: 14px;
+      top: -5px;
+      color: #fff;
+    }
+
+    .x-icon::before,
+    .x-icon::after {
+      content: "";
+      width: 15px;
+      height: 1px;
+      background: currentColor;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform-origin: center;
+    }
+
+    .x-icon::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .x-icon::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    .hero {
+      min-height: 596px;
+      padding-top: 31px;
+      background: var(--brown-deep);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      --hero-y: 0px;
+      --hero-scroll-scale: 0;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: -34px 0 -70px;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center 52%;
+      filter: saturate(0.95) contrast(1.04);
+      transform: translate3d(0, var(--hero-y), 0) scale(calc(1.04 + var(--hero-scroll-scale)));
+      transform-origin: center;
+      animation: heroImageBreath 9s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(90deg, rgba(29, 20, 14, 0.88) 0%, rgba(58, 35, 22, 0.54) 38%, rgba(58, 35, 22, 0.18) 100%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0) 34%),
+        radial-gradient(circle at 55% 20%, rgba(255, 228, 192, 0.22), transparent 34%);
+      pointer-events: none;
+    }
+
+    .site-header {
+      min-height: 82px;
+      padding: 0 58px;
+      display: flex;
+      align-items: center;
+      position: fixed;
+      inset: var(--header-top, 31px) 0 auto;
+      z-index: 120;
+      color: #fff;
+      transition: top 260ms ease, min-height 360ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 360ms ease, color 300ms ease;
+      isolation: isolate;
+    }
+
+    .site-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(251, 246, 239, 0.96), rgba(244, 234, 223, 0.92)),
+        radial-gradient(circle at 18% 50%, rgba(155, 96, 61, 0.12), transparent 35%);
+      opacity: 0;
+      transform: translateY(-100%);
+      transition: opacity 420ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .site-header::after {
+      content: "";
+      position: absolute;
+      left: 58px;
+      right: 58px;
+      bottom: 0;
+      height: 1px;
+      background: rgba(45, 30, 22, 0.14);
+      opacity: 0;
+      transform: scaleX(0.6);
+      transition: opacity 380ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+      transform-origin: center;
+    }
+
+    .site-header.is-scrolled {
+      min-height: 70px;
+      color: var(--ink);
+      box-shadow: 0 18px 55px rgba(45, 30, 22, 0.1);
+      backdrop-filter: blur(16px);
+    }
+
+    .site-header.is-scrolled::before {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .site-header.is-scrolled::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .header-inner {
+      width: min(100%, 1395px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 230px 1fr 330px;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .brand {
+      width: max-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      color: currentColor;
+      transition: color 280ms ease, transform 280ms ease;
+    }
+
+    .brand-mark {
+      font-family: var(--serif);
+      font-size: 52px;
+      font-weight: 400;
+      line-height: 0.9;
+      letter-spacing: -5px;
+    }
+
+    .brand-name {
+      display: grid;
+      gap: 3px;
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(24px, 3.1vw, 46px);
+    }
+
+    .main-nav a,
+    .header-action {
+      color: currentColor;
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: color 180ms ease, opacity 180ms ease, transform 180ms ease;
+    }
+
+    .main-nav a:hover,
+    .header-action:hover {
+      color: currentColor;
+      opacity: 0.72;
+      transform: translateY(-1px);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 22px;
+    }
+
+    .header-action {
+      padding: 0;
+      background: transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-action svg {
+      width: 17px;
+      height: 17px;
+      flex: 0 0 auto;
+    }
+
+    .menu-toggle {
+      display: none;
+      color: currentColor;
+    }
+
+    .menu-toggle::before,
+    .menu-toggle::after {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: currentColor;
+      position: absolute;
+      left: 9px;
+      transition: transform 180ms ease, top 180ms ease;
+    }
+
+    .menu-toggle::before {
+      top: 18px;
+    }
+
+    .menu-toggle::after {
+      top: 24px;
+    }
+
+    .menu-toggle[aria-expanded="true"]::before,
+    .menu-toggle[aria-expanded="true"]::after {
+      top: 21px;
+    }
+
+    .menu-toggle[aria-expanded="true"]::before {
+      transform: rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"]::after {
+      transform: rotate(-45deg);
+    }
+
+    .hero-content {
+      width: min(100%, 1395px);
+      margin: 0 auto;
+      padding: 183px 58px 124px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .hero h1 {
+      width: min(490px, 100%);
+      margin: 0 0 56px;
+      font-family: var(--serif);
+      font-size: clamp(43px, 4vw, 60px);
+      font-weight: 400;
+      line-height: 1.14;
+      letter-spacing: 0;
+    }
+
+    .text-link {
+      width: max-content;
+      max-width: 100%;
+      color: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid currentColor;
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: 1.55px;
+      text-transform: uppercase;
+      transition: gap 180ms ease, opacity 180ms ease;
+    }
+
+    .text-link:hover {
+      gap: 19px;
+      opacity: 0.76;
+    }
+
+    .slider-count {
+      position: absolute;
+      right: 52px;
+      top: 65%;
+      z-index: 3;
+      display: grid;
+      gap: 12px;
+      color: #fff;
+      font-size: 12px;
+      line-height: 1;
+      letter-spacing: 1.2px;
+    }
+
+    .essence {
+      min-height: 350px;
+      background: var(--paper);
+      display: grid;
+      grid-template-columns: minmax(320px, 0.72fr) minmax(650px, 1.28fr);
+    }
+
+    .essence-copy {
+      padding: 58px 88px 44px;
+      border-right: 1px solid rgba(124, 83, 56, 0.08);
+    }
+
+    .eyebrow {
+      margin: 0 0 19px;
+      color: currentColor;
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 1.55px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::after {
+      content: "";
+      width: 33px;
+      height: 1px;
+      margin-top: 17px;
+      background: currentColor;
+      display: block;
+      opacity: 0.7;
+    }
+
+    .essence h2,
+    .ritual h2 {
+      margin: 0 0 25px;
+      font-family: var(--serif);
+      font-size: clamp(32px, 3vw, 42px);
+      font-weight: 400;
+      line-height: 1.16;
+    }
+
+    .essence-copy p:not(.eyebrow) {
+      width: 315px;
+      max-width: 100%;
+      margin: 0 0 28px;
+      font-size: 13px;
+      line-height: 1.72;
+    }
+
+    .essence-values {
+      padding: 74px 68px 66px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(120px, 1fr));
+      align-items: start;
+    }
+
+    .value {
+      min-height: 186px;
+      padding: 0 34px;
+      border-left: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .value:first-child {
+      border-left: 0;
+    }
+
+    .value svg {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 30px;
+      color: var(--copper);
+      display: block;
+      stroke-width: 1.15;
+    }
+
+    .value h3,
+    .ritual-value h3 {
+      margin: 0 0 14px;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.3;
+      letter-spacing: 1.45px;
+      text-transform: uppercase;
+    }
+
+    .value p,
+    .ritual-value p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.72;
+    }
+
+    .featured {
+      min-height: 380px;
+      height: 380px;
+      display: grid;
+      grid-template-columns: minmax(350px, 1.08fr) minmax(292px, 0.62fr) minmax(250px, 0.44fr);
+      background: var(--brown-deep);
+      color: #fff;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .image-panel {
+      min-height: 0;
+      height: 100%;
+      overflow: hidden;
+      background: var(--cream-2);
+      position: relative;
+      z-index: 1;
+      will-change: transform, opacity;
+    }
+
+    .image-panel img,
+    .collection-card img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 750ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .image-panel:hover img,
+    .collection-card:hover img {
+      transform: scale(1.065);
+    }
+
+    .featured-flying-img {
+      position: absolute;
+      z-index: 2;
+      object-fit: cover;
+      object-position: center;
+      pointer-events: none;
+      box-shadow: 0 28px 70px rgba(20, 13, 9, 0.28);
+      will-change: left, top, width, height, opacity, filter;
+    }
+
+    body.motion-ready .featured .image-panel {
+      opacity: 0;
+    }
+
+    body.motion-ready .featured .image-panel:first-child {
+      transform: translate3d(-90px, 0, 0);
+    }
+
+    body.motion-ready .featured .image-panel:last-child {
+      transform: translate3d(90px, 0, 0);
+    }
+
+    body.motion-ready .featured.is-visible .image-panel {
+      animation: featuredPanelIn 1100ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    body.motion-ready .featured.is-visible .image-panel:last-child {
+      animation-delay: 140ms;
+    }
+
+    body.motion-ready .featured.is-visible .image-panel img {
+      animation: featuredImageDrift 8s ease-in-out 900ms infinite alternate;
+    }
+
+    body.motion-ready .featured.is-visible .image-panel:last-child img {
+      animation-name: featuredImageDriftReverse;
+    }
+
+    .featured.is-swapping .image-panel img {
+      animation: none !important;
+    }
+
+    .featured.has-carousel .image-panel {
+      opacity: 1;
+      transform: none;
+    }
+
+    .featured-copy {
+      padding: 50px 64px 42px;
+      background:
+        linear-gradient(135deg, rgba(78, 42, 28, 0.96), rgba(28, 22, 18, 0.98) 76%),
+        radial-gradient(circle at 20% 20%, rgba(210, 148, 100, 0.16), transparent 32%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 4;
+    }
+
+    .featured-copy .eyebrow {
+      margin-bottom: 28px;
+    }
+
+    .featured-copy h2 {
+      margin: 0 0 22px;
+      font-family: var(--serif);
+      font-size: clamp(31px, 2.9vw, 40px);
+      font-weight: 400;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .featured-copy p:not(.eyebrow) {
+      width: 285px;
+      max-width: 100%;
+      margin: 0 0 30px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 13px;
+      line-height: 1.68;
+    }
+
+    .featured-arrows {
+      margin-top: 32px;
+      display: flex;
+      gap: 31px;
+      color: #fff;
+    }
+
+    .arrow-button {
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      color: currentColor;
+      position: relative;
+    }
+
+    .arrow-button::before {
+      content: "";
+      position: absolute;
+      top: 11px;
+      width: 11px;
+      height: 11px;
+      border-top: 1px solid currentColor;
+      border-left: 1px solid currentColor;
+    }
+
+    .arrow-button.prev::before {
+      left: 11px;
+      transform: rotate(-45deg);
+    }
+
+    .arrow-button.next::before {
+      left: 8px;
+      transform: rotate(135deg);
+    }
+
+    .collections {
+      padding: 64px 58px 54px;
+      background: var(--paper);
+      overflow: hidden;
+    }
+
+    .section-head {
+      width: min(100%, 1432px);
+      margin: 0 auto 33px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: 1.75px;
+      text-transform: uppercase;
+    }
+
+    .section-head .text-link {
+      color: var(--ink);
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .collection-grid {
+      width: min(100%, 1432px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 34px;
+      will-change: transform;
+    }
+
+    .collection-card {
+      min-width: 0;
+      background: rgba(255, 255, 255, 0.36);
+      will-change: transform, opacity;
+    }
+
+    body.motion-ready .collection-card {
+      opacity: 1;
+      transform: none;
+    }
+
+    body.motion-ready .collections.is-visible .collection-card {
+      animation: none;
+    }
+
+    body.motion-ready .collections.has-carousel .collection-card {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+
+    .collection-img {
+      height: clamp(168px, 17vw, 182px);
+      overflow: hidden;
+      background: #d9c5ae;
+      position: relative;
+    }
+
+    .collection-card.is-highlight .collection-img::after {
+      content: "+";
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #fff;
+      color: var(--copper);
+      display: grid;
+      place-items: center;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 18px;
+      line-height: 1;
+      box-shadow: 0 8px 24px rgba(42, 31, 22, 0.12);
+    }
+
+    .collection-body {
+      min-height: 96px;
+      padding: 23px 18px 20px;
+    }
+
+    .collection-body h3 {
+      margin: 0 0 10px;
+      color: var(--brown);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.3;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .collection-body a {
+      color: var(--brown);
+      padding-bottom: 5px;
+      border-bottom: 1px solid currentColor;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .ritual-strip {
+      min-height: 214px;
+      display: grid;
+      grid-template-columns: minmax(340px, 0.72fr) minmax(680px, 1.28fr);
+      background: var(--paper);
+    }
+
+    .ritual {
+      min-height: 214px;
+      padding: 41px 58px 38px;
+      background: var(--olive-soft);
+      color: #fff;
+      display: grid;
+      grid-template-columns: 1fr 70px;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .ritual .eyebrow {
+      margin-bottom: 19px;
+    }
+
+    .ritual h2 {
+      margin-bottom: 27px;
+    }
+
+    .play-button {
+      width: 62px;
+      height: 62px;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      background: transparent;
+      color: #fff;
+      position: relative;
+      transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .play-button::before {
+      content: "";
+      position: absolute;
+      left: 25px;
+      top: 20px;
+      width: 0;
+      height: 0;
+      border-left: 14px solid currentColor;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+    }
+
+    .play-button:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: scale(1.04);
+    }
+
+    .ritual-values {
+      min-height: 214px;
+      padding: 38px 58px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(130px, 1fr));
+      gap: 42px;
+      align-items: start;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ritual-values::after {
+      content: "";
+      position: absolute;
+      right: -52px;
+      top: 30px;
+      width: 150px;
+      height: 183px;
+      border: 2px solid rgba(155, 96, 61, 0.5);
+      border-left: 0;
+      border-radius: 50%;
+      box-shadow: -20px 0 0 -18px rgba(155, 96, 61, 0.5), -40px 0 0 -38px rgba(155, 96, 61, 0.5);
+    }
+
+    .ritual-value {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ritual-value .circle {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: #f1e8df;
+      color: var(--copper);
+      display: grid;
+      place-items: center;
+    }
+
+    .site-footer {
+      width: 100%;
+      padding: 72px 48px 34px;
+      background: #fbf6ef;
+      color: #050505;
+    }
+
+    .footer-service-strip {
+      min-height: 86px;
+      padding: 20px 58px;
+      background: linear-gradient(90deg, #4a291c 0%, #2c1c15 100%);
+      color: #ffffff;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 28px;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .service-strip-item {
+      min-width: 0;
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 18px;
+      align-items: center;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .service-strip-item svg {
+      width: 26px;
+      height: 26px;
+      stroke-width: 1.35;
+      color: #d1a17f;
+    }
+
+    .service-strip-item h3 {
+      margin: 0 0 4px;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: 1.25px;
+      text-transform: uppercase;
+    }
+
+    .service-strip-item p {
+      margin: 0;
+      color: #c8b6aa;
+      font-size: 12px;
+      line-height: 1.42;
+    }
+
+    .footer-inner {
+      width: 100%;
+      max-width: 1184px;
+      margin: 0 auto;
+      padding-top: 28px;
+      border-top: 3px solid #050505;
+    }
+
+    .footer-main {
+      min-height: 146px;
+      display: flex;
+      justify-content: space-between;
+      gap: 48px;
+    }
+
+    .footer-message {
+      max-width: 600px;
+    }
+
+    .footer-message h2 {
+      margin: 0 0 24px;
+      max-width: 610px;
+      color: #050505;
+      font-family: var(--sans);
+      font-size: clamp(25px, 2.6vw, 36px);
+      font-weight: 500;
+      line-height: 1.16;
+      letter-spacing: -0.2px;
+    }
+
+    .footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .footer-contact-pill {
+      min-height: 38px;
+      padding: 0 18px;
+      border-radius: 8px;
+      background: #050505;
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1;
+      transition: transform 160ms ease, background 160ms ease;
+    }
+
+    .footer-contact-pill:hover {
+      background: #241812;
+      transform: translateY(-2px);
+    }
+
+    .footer-mini-nav {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .footer-mini-nav a {
+      color: #6b5b52;
+      font-size: 12px;
+      line-height: 1;
+      border-bottom: 1px solid rgba(45, 30, 22, 0.25);
+      transition: color 160ms ease, border-color 160ms ease;
+    }
+
+    .footer-mini-nav a:hover {
+      color: #050505;
+      border-color: #050505;
+    }
+
+    .footer-social-area {
+      min-width: 290px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .social-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .social-list a {
+      color: #050505;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1;
+      transition: color 160ms ease, transform 160ms ease;
+    }
+
+    .social-list svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .social-list a:hover {
+      color: var(--copper);
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      width: 100%;
+      margin-top: 58px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .footer-bottom p,
+    .footer-bottom small {
+      margin: 0;
+      color: #5e544e;
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 1.45;
+    }
+
+    .overlay,
+    .drawer {
+      position: fixed;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease, transform 240ms ease;
+    }
+
+    .overlay {
+      inset: 0;
+      z-index: 150;
+      background: rgba(31, 21, 15, 0.5);
+      backdrop-filter: blur(2px);
+    }
+
+    .overlay.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer {
+      top: 0;
+      right: 0;
+      z-index: 170;
+      width: min(430px, 100vw);
+      height: 100vh;
+      padding: 36px 34px;
+      background: var(--paper);
+      color: var(--ink);
+      box-shadow: var(--shadow);
+      transform: translateX(100%);
+    }
+
+    .drawer.is-open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0);
+    }
+
+    .drawer h2 {
+      margin: 0 0 28px;
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .drawer-close {
+      position: absolute;
+      right: 19px;
+      top: 19px;
+      color: var(--ink);
+    }
+
+    .search-drawer input {
+      width: 100%;
+      height: 54px;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      outline: 0;
+      font-size: 15px;
+    }
+
+    .search-suggestions,
+    .cart-list {
+      margin: 30px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 16px;
+    }
+
+    .search-suggestions a,
+    .cart-list li {
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .menu-drawer nav {
+      margin-top: 34px;
+      display: grid;
+    }
+
+    .menu-drawer nav a {
+      min-height: 58px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+
+    .menu-drawer nav a::after {
+      content: "->";
+      opacity: 0.5;
+    }
+
+    .drawer-note {
+      margin: 34px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      z-index: 190;
+      min-width: 260px;
+      padding: 14px 18px;
+      background: var(--ink);
+      color: #fff;
+      text-align: center;
+      font-size: 13px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 18px);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .toast.is-open {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @keyframes heroImageBreath {
+      0% {
+        transform: translate3d(0, var(--hero-y), 0) scale(calc(1.035 + var(--hero-scroll-scale)));
+      }
+
+      100% {
+        transform: translate3d(0, var(--hero-y), 0) scale(calc(1.105 + var(--hero-scroll-scale)));
+      }
+    }
+
+    @keyframes featuredPanelIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    @keyframes featuredImageDrift {
+      0% {
+        transform: translate3d(-2.5%, 0, 0) scale(1.08);
+      }
+
+      100% {
+        transform: translate3d(2.5%, 0, 0) scale(1.12);
+      }
+    }
+
+    @keyframes featuredImageDriftReverse {
+      0% {
+        transform: translate3d(2.5%, 0, 0) scale(1.08);
+      }
+
+      100% {
+        transform: translate3d(-2.5%, 0, 0) scale(1.12);
+      }
+    }
+
+    @keyframes collectionSlideIn {
+      0% {
+        opacity: 0;
+        transform: translate3d(120px, 0, 0);
+      }
+
+      58% {
+        opacity: 1;
+        transform: translate3d(-10px, 0, 0);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      body.motion-ready .featured .image-panel,
+      body.motion-ready .collection-card {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 1220px) {
+      .site-header {
+        padding: 0 30px;
+      }
+
+      .site-header::after {
+        left: 30px;
+        right: 30px;
+      }
+
+      .header-inner {
+        grid-template-columns: 220px 1fr auto;
+        gap: 20px;
+      }
+
+      .main-nav {
+        gap: 22px;
+      }
+
+      .header-actions {
+        gap: 14px;
+      }
+
+      .account-action span,
+      .search-action span {
+        display: none;
+      }
+
+      .essence,
+      .featured,
+      .ritual-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .featured {
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr);
+      }
+
+      .featured .image-panel:last-child {
+        display: none;
+      }
+
+      .ritual-values,
+      .essence-values {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .site-footer {
+        height: auto;
+        min-height: 290px;
+        padding-bottom: 32px;
+      }
+
+      .footer-service-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        row-gap: 22px;
+      }
+
+      .footer-main {
+        align-items: flex-start;
+      }
+
+      .footer-message {
+        max-width: 560px;
+      }
+
+      .footer-social-area {
+        min-width: 240px;
+      }
+
+      .value:nth-child(3) {
+        border-left: 0;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .promo-bar {
+        height: 36px;
+        padding: 0 46px 0 18px;
+        font-size: 10px;
+        line-height: 1.35;
+        text-align: center;
+      }
+
+      .promo-close {
+        top: -3px;
+      }
+
+      .hero {
+        min-height: 650px;
+        padding-top: 36px;
+        background-position: center;
+      }
+
+      .site-header {
+        min-height: 84px;
+        padding: 0 18px;
+      }
+
+      .site-header.is-scrolled {
+        min-height: 72px;
+      }
+
+      .site-header::after {
+        left: 18px;
+        right: 18px;
+      }
+
+      .header-inner {
+        grid-template-columns: 1fr auto auto;
+        gap: 10px;
+      }
+
+      .brand-mark {
+        font-size: 43px;
+        line-height: 0.9;
+        letter-spacing: -5px;
+      }
+
+      .brand-name {
+        font-size: 9px;
+        letter-spacing: 4.5px;
+      }
+
+      .main-nav {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: inline-grid;
+      }
+
+      .header-actions {
+        gap: 4px;
+      }
+
+      .header-action span,
+      .account-action {
+        display: none;
+      }
+
+      .hero-content {
+        padding: 158px 24px 96px;
+      }
+
+      .hero h1 {
+        width: min(420px, 100%);
+        margin-bottom: 42px;
+        font-size: clamp(39px, 11vw, 49px);
+      }
+
+      .slider-count {
+        display: none;
+      }
+
+      .essence-copy,
+      .essence-values,
+      .featured-copy,
+      .collections,
+      .ritual,
+      .ritual-values {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .essence-copy {
+        border-right: 0;
+        padding-top: 58px;
+      }
+
+      .essence-values {
+        padding-top: 18px;
+        grid-template-columns: 1fr;
+      }
+
+      .value,
+      .value:nth-child(3) {
+        min-height: 0;
+        padding: 28px 4px;
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .value:first-child {
+        border-top: 0;
+      }
+
+      .featured {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+
+      .image-panel {
+        height: 286px;
+        min-height: 286px;
+      }
+
+      .featured-copy {
+        padding-top: 46px;
+        padding-bottom: 46px;
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .collection-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .collection-img {
+        height: clamp(150px, 34vw, 210px);
+      }
+
+      .ritual {
+        grid-template-columns: 1fr;
+      }
+
+      .ritual-values {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 34px 22px;
+      }
+
+      .site-footer {
+        padding: 48px 20px 28px;
+      }
+
+      .footer-service-strip {
+        grid-template-columns: 1fr;
+        padding: 28px 24px;
+      }
+
+      .footer-inner,
+      .footer-bottom {
+        width: 100%;
+      }
+
+      .footer-main {
+        min-height: 0;
+        flex-direction: column;
+        gap: 36px;
+      }
+
+      .footer-message h2 {
+        font-size: 24px;
+      }
+
+      .footer-actions {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-social-area {
+        min-width: 0;
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .social-list {
+        flex-wrap: wrap;
+        gap: 16px 22px;
+      }
+
+      .footer-bottom {
+        margin-top: 54px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .hero {
+        min-height: 620px;
+      }
+
+      .brand {
+        gap: 10px;
+      }
+
+      .brand-name {
+        display: none;
+      }
+
+      .hero-content {
+        padding-top: 112px;
+      }
+
+      .essence h2,
+      .ritual h2 {
+        font-size: 34px;
+      }
+
+      .collection-grid,
+      .ritual-values {
+        grid-template-columns: 1fr;
+      }
+
+      .collection-img {
+        height: 230px;
+      }
+
+      .drawer {
+        width: 100vw;
+        padding: 34px 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="promo-bar">
+    Livraison offerte d&egrave;s 150 000 FCFA d'achat
+    <button class="icon-button promo-close x-icon" type="button" aria-label="Fermer la barre de livraison"></button>
+  </div>
+
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <img src="img/WhatsApp Image 2026-07-08 at 10.43.08.jpeg" alt="">
+    </div>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="new_acceuil.html" aria-label="Aliagui Home">
+          <span class="brand-mark">AH</span>
+          <span class="brand-name"><span>Aliagui</span><span>Home</span></span>
+        </a>
+
+        <nav class="main-nav" aria-label="Navigation principale">
+          <!--<a href="histoire.html">&Agrave; propos</a>-->
+          <a href="index.html">Histoire</a>
+          <a href="collections.html">Collections</a>
+          <a href="histoire.html">Showroom</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="header-action search-action" type="button" aria-label="Rechercher">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.8 4a5.8 5.8 0 0 1 4.56 9.38l4.16 4.15-1.14 1.15-4.16-4.16A5.8 5.8 0 1 1 9.8 4Zm0 1.7a4.1 4.1 0 1 0 0 8.2 4.1 4.1 0 0 0 0-8.2Z"/></svg>
+            <span>Rechercher</span>
+          </button>
+          
+          <button class="header-action cart-action" type="button" aria-label="Ouvrir le panier">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 7V6a5 5 0 0 1 10 0v1h2.05l1.2 14H3.75L4.95 7H7Zm2 0h6V6a3 3 0 0 0-6 0v1ZM6.7 8.7 5.82 19.3h12.36L17.3 8.7H6.7Z"/></svg>
+            <span>Panier (0)</span>
+          </button>
+          <button class="icon-button menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false"></button>
+        </div>
+      </div>
+    </header>
+
+    <div class="hero-content">
+      <h1>Le pagne de maman devient l'art de vivre d'aujourd'hui.</h1>
+      <a class="text-link" href="collections.html">D&eacute;couvrir l'univers</a>
+    </div>
+    <div class="slider-count" aria-hidden="true">
+      <span>01</span>
+      <span>04</span>
+    </div>
+  </section>
+
+  <section class="essence">
+    <div class="essence-copy">
+      <p class="eyebrow">Notre essence</p>
+      <h2>Un refuge.<br>Une histoire.<br>Une &eacute;motion.</h2>
+      <p>Aliagui Home transforme le souvenir d'un pagne transmis en une collection de linge de maison pens&eacute;e pour accueillir, rassurer et transmettre.</p>
+      <a class="text-link" href="histoire.html">En savoir plus</a>
+    </div>
+
+    <div class="essence-values">
+      <article class="value">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" aria-hidden="true"><path d="M32 4 52 32 32 60 12 32 32 4Z"/><path d="m32 15 11 17-11 17-11-17 11-17Z"/><path d="M32 4v56M12 32h40"/></svg>
+        <h3>H&eacute;ritage</h3>
+        <p>Le pagne transmis de g&eacute;n&eacute;ration en g&eacute;n&eacute;ration.</p>
+      </article>
+      <article class="value">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" aria-hidden="true"><path d="M8 22c9 6 17 6 26 0s15-6 22 0M8 32c9 6 17 6 26 0s15-6 22 0M8 42c9 6 17 6 26 0s15-6 22 0"/></svg>
+        <h3>Douceur</h3>
+        <p>Le confort et la douceur au quotidien.</p>
+      </article>
+      <article class="value">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" aria-hidden="true"><path d="M32 8v24M15 44h34M20 56h24M11 32h42"/><path d="M32 32 17 13M32 32 47 13M32 32 8 22M32 32l24-10"/></svg>
+        <h3>&Eacute;l&eacute;gance</h3>
+        <p>Un luxe discret, intemporel et raffin&eacute;.</p>
+      </article>
+      <article class="value">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" aria-hidden="true"><path d="M13 29 32 10l19 19v26H13V29Z"/><path d="M25 55V35h14v20"/></svg>
+        <h3>Refuge</h3>
+        <p>La maison comme un lieu de paix et de protection.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="featured">
+    <div class="image-panel">
+      <img src="img/WhatsApp Image 2026-07-08 at 10.43.07 (1).jpeg" alt="Parure blanche aux motifs vert profond">
+    </div>
+    <div class="featured-copy">
+      <p class="eyebrow">Collection phare</p>
+      <h2>Nanan</h2>
+      <p>Inspir&eacute;e des plis du pagne, la collection Nanan est une &eacute;treinte de douceur et de m&eacute;moire.</p>
+      <a class="text-link" href="collections.html">D&eacute;couvrir</a>
+      <div class="featured-arrows" aria-hidden="true">
+        <button class="arrow-button prev" type="button" aria-label="Collection pr&eacute;c&eacute;dente"></button>
+        <button class="arrow-button next" type="button" aria-label="Collection suivante"></button>
+      </div>
+    </div>
+    <div class="image-panel">
+      <img src="img/WhatsApp Image 2026-07-08 at 10.43.07.jpeg" alt="Chambre avec parure de lit orange et brune">
+    </div>
+  </section>
+
+  <section class="collections">
+    <div class="section-head">
+      <h2>Nos collections</h2>
+      <a class="text-link" href="collections.html">Voir toutes les collections <span aria-hidden="true">-&gt;</span></a>
+    </div>
+    <div class="collection-grid">
+      <article class="collection-card is-highlight">
+        <div class="collection-img"><img src="img/WhatsApp Image 2026-07-08 at 10.43.07 (1).jpeg" alt="Collection Nanan"></div>
+        <div class="collection-body">
+          <h3>Nanan</h3>
+          <a href="collections.html">Voir la collection</a>
+        </div>
+      </article>
+      <article class="collection-card">
+        <div class="collection-img"><img src="img/WhatsApp Image 2026-07-08 at 10.43.08.jpeg" alt="Collection Teranga"></div>
+        <div class="collection-body">
+          <h3>Teranga</h3>
+          <a href="collections.html">Voir la collection</a>
+        </div>
+      </article>
+      <article class="collection-card">
+        <div class="collection-img"><img src="img/WhatsApp Image 2026-07-08 at 10.43.07.jpeg" alt="Collection Kairo"></div>
+        <div class="collection-body">
+          <h3>Kairo</h3>
+          <a href="collections.html">Voir la collection</a>
+        </div>
+      </article>
+      <article class="collection-card">
+        <div class="collection-img"><img src="img/WhatsApp Image 2026-07-08 at 10.43.07 (2).jpeg" alt="Collection Essentiels"></div>
+        <div class="collection-body">
+          <h3>Essentiels</h3>
+          <a href="collections.html">Voir la collection</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="ritual-strip">
+    <div class="ritual">
+      <div>
+        <p class="eyebrow">Le rituel Aliagui</p>
+        <h2>Chaque d&eacute;tail raconte une histoire.</h2>
+        <a class="text-link" href="histoire.html">D&eacute;couvrir le rituel</a>
+      </div>
+      <button class="play-button" type="button" aria-label="Lire la video"></button>
+    </div>
+    <div class="ritual-values">
+      <article class="ritual-value">
+        <div class="circle"><svg width="38" height="38" viewBox="0 0 64 64" fill="none" stroke="currentColor" aria-hidden="true"><path d="M10 44c14-28 28-28 44 0"/><path d="M18 42c10-18 19-18 28 0"/><path d="M32 14v38"/></svg></div>
+        <h3>Mati&egrave;res nobles</h3>
+        <p>Des mati&egrave;res naturelles s&eacute;lectionn&eacute;es avec soin.</p>
+      </article>
+      <article class="ritual-value">
+        <div class="circle"><svg width="38" height="38" viewBox="0 0 64 64" fill="none" stroke="currentColor" aria-hidden="true"><path d="M21 52V30c0-7 5-10 8-14M43 52V30c0-7-5-10-8-14"/><path d="M18 32c-5 8-4 15 3 20M46 32c5 8 4 15-3 20"/></svg></div>
+        <h3>Savoir-faire</h3>
+        <p>Un savoir-faire artisanal inspir&eacute; d'hier et pens&eacute; pour aujourd'hui.</p>
+      </article>
+      <article class="ritual-value">
+        <div class="circle"><svg width="38" height="38" viewBox="0 0 64 64" fill="none" stroke="currentColor" aria-hidden="true"><path d="M14 28h36v28H14zM10 20h44v8H10zM32 20v36"/><path d="M32 20c-8-14-21-6-14 0 4 4 10 2 14 0Zm0 0c8-14 21-6 14 0-4 4-10 2-14 0Z"/></svg></div>
+        <h3>Emballage signature</h3>
+        <p>Un &eacute;crin &eacute;l&eacute;gant pour sublimer chaque commande.</p>
+      </article>
+      <article class="ritual-value">
+        <div class="circle"><svg width="38" height="38" viewBox="0 0 64 64" fill="none" stroke="currentColor" aria-hidden="true"><path d="M32 54S12 42 12 25c0-8 10-13 20-2 10-11 20-6 20 2 0 17-20 29-20 29Z"/></svg></div>
+        <h3>Fait pour durer</h3>
+        <p>Des cr&eacute;ations intemporelles con&ccedil;ues pour traverser le temps.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="footer-service-strip" aria-label="Services Aliagui Home">
+    <div class="service-strip-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 13a8 8 0 0 1 16 0"/><path d="M4 13v5h4v-5H4Zm12 0v5h4v-5h-4Z"/></svg>
+      <div>
+        <h3>Service client</h3>
+        <p>+33 6 00 00 00 00</p>
+      </div>
+    </div>
+    <div class="service-strip-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 7h11v10H3zM14 11h4l3 3v3h-7z"/><path d="M7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></svg>
+      <div>
+        <h3>Livraison & retours</h3>
+        <p>Livraison offerte d&egrave;s 150 000 FCFA</p>
+      </div>
+    </div>
+    <div class="service-strip-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M7 10V7a5 5 0 0 1 10 0v3"/><path d="M5 10h14v11H5z"/></svg>
+      <div>
+        <h3>Paiement s&eacute;curis&eacute;</h3>
+        <p>Visa, Mastercard, PayPal</p>
+      </div>
+    </div>
+    <div class="service-strip-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 3.5a8.1 8.1 0 0 1 6.9 12.3l.9 4.2-4.3-.9A8.1 8.1 0 0 1 3.9 8.1 8.1 8.1 0 0 1 12 3.5Zm0 1.8a6.3 6.3 0 0 0-5.4 9.5l.2.3-.5 2.4 2.5-.5.3.2A6.3 6.3 0 1 0 12 5.3Z"/></svg>
+      <div>
+        <h3>Suivez-nous</h3>
+        <p>TikTok, Instagram, Facebook, WhatsApp</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-main">
+        <div class="footer-message">
+          <h2>Une question sur nos draps en pagne ? Ecrivez-nous ou retrouvez Aliagui Home sur nos reseaux.</h2>
+          <div class="footer-actions">
+            <a class="footer-contact-pill" href="mailto:contact@aliaguihome.com">
+              contact@aliaguihome.com
+              <svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 5h14v14H5V5Zm2 2v10h10V7H7Zm2 2h6v2H9V9Zm0 4h6v2H9v-2Z"/></svg>
+            </a>
+            <nav class="footer-mini-nav" aria-label="Explorer">
+              <a href="collections.html">Collections</a>
+              <a href="histoire.html">Notre Histoire</a>
+              <a href="contact.html">Service Client</a>
+            </nav>
+          </div>
+        </div>
+
+        <nav class="footer-social-area" aria-label="R&eacute;seaux sociaux">
+          <ul class="social-list">
+            <li><a href="#" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.2 4.1c.5 1.5 1.6 2.7 3.1 3.2v3.1c-1.1 0-2.2-.3-3.1-.9v5.6a5.4 5.4 0 1 1-5.4-5.4h.8v3.2a2.2 2.2 0 1 0 1.5 2.1V4.1h3.1Z"/></svg>
+              <span>TikTok</span>
+            </a></li>
+            <li><a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4Zm0 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H8Zm4 3.2a2.8 2.8 0 1 1 0 5.6 2.8 2.8 0 0 1 0-5.6Zm0 2a.8.8 0 1 0 0 1.6.8.8 0 0 0 0-1.6Zm4.2-2.7a.8.8 0 1 1-1.6 0 .8.8 0 0 1 1.6 0Z"/></svg>
+              <span>Instagram</span>
+            </a></li>
+            <li><a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7h2.3l.4-3h-2.7V9.1c0-.9.2-1.5 1.5-1.5h1.3V4.9c-.6-.1-1.4-.2-2.4-.2-2.4 0-4 1.5-4 4.1V11H7.5v3h2.4v7h3.6Z"/></svg>
+              <span>Facebook</span>
+            </a></li>
+            <li><a href="#" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.5a8.1 8.1 0 0 1 6.9 12.3l.9 4.2-4.3-.9A8.1 8.1 0 0 1 3.9 8.1 8.1 8.1 0 0 1 12 3.5Zm0 1.8a6.3 6.3 0 0 0-5.4 9.5l.2.3-.5 2.4 2.5-.5.3.2A6.3 6.3 0 1 0 12 5.3Zm-2.4 3c.2 0 .4 0 .5.4l.5 1.2c.1.2.1.4 0 .5l-.4.5c-.1.1-.2.2-.1.4.4.8 1.1 1.5 1.9 1.9.2.1.3.1.4-.1l.6-.7c.1-.2.3-.2.5-.1l1.3.6c.2.1.4.2.4.4 0 .5-.4 1.1-.8 1.3-.4.2-1.2.4-2.7-.2-1.8-.8-3-2.4-3.1-2.6-.1-.1-.8-1.1-.8-2.1s.5-1.5.7-1.7c.2-.2.4-.2.6-.2Z"/></svg>
+              <span>WhatsApp</span>
+            </a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Draps en pagne et linge de lit inspir&eacute;s du patrimoine textile africain.</p>
+        <small>&copy; 2026 ALIAGUI HOME. TOUS DROITS R&Eacute;SERV&Eacute;S.</small>
+      </div>
+    </div>
+  </footer>
+
+  <div class="overlay" hidden></div>
+
+  <aside class="drawer menu-drawer" aria-label="Menu mobile" hidden>
+    <button class="icon-button drawer-close x-icon" type="button" aria-label="Fermer le menu"></button>
+    <h2>Menu</h2>
+    <nav aria-label="Navigation mobile">
+      <a href="histoire.html">&Agrave; propos</a>
+      <a href="collections.html">Collections</a>
+      <a href="index.html">Maison Aliagui</a>
+      <a href="histoire.html">Journal</a>
+      <a href="contact.html">Sur-mesure</a>
+    </nav>
+    <p class="drawer-note">Des draps en pagne et du linge de lit con&ccedil;us pour donner &agrave; la maison une m&eacute;moire douce et contemporaine.</p>
+  </aside>
+
+  <aside class="drawer search-drawer" aria-label="Recherche" hidden>
+    <button class="icon-button drawer-close x-icon" type="button" aria-label="Fermer la recherche"></button>
+    <h2>Rechercher</h2>
+    <input type="search" placeholder="Draps, collections, sur-mesure" aria-label="Recherche">
+    <ul class="search-suggestions">
+      <li><a href="collections.html">Parures en pagne</a></li>
+      <li><a href="collections.html">Coussins assortis</a></li>
+      <li><a href="contact.html">Commande sur-mesure</a></li>
+    </ul>
+  </aside>
+
+  <aside class="drawer cart-drawer" aria-label="Panier" hidden>
+    <button class="icon-button drawer-close x-icon" type="button" aria-label="Fermer le panier"></button>
+    <h2>Panier</h2>
+    <ul class="cart-list">
+      <li><span>Parure Nanan</span><strong>185 000 FCFA</strong></li>
+      <li><span>Coussins Teranga</span><strong>45 000 FCFA</strong></li>
+    </ul>
+    <p class="drawer-note">Votre panier est une demonstration interactive pour cette maquette.</p>
+  </aside>
+
+  <div class="toast" role="status" aria-live="polite">Le rituel Aliagui sera bient&ocirc;t disponible.</div>
+
+  <script>
+    const body = document.body;
+    const hero = document.querySelector(".hero");
+    const siteHeader = document.querySelector(".site-header");
+    const promoBar = document.querySelector(".promo-bar");
+    const promoClose = document.querySelector(".promo-close");
+    const overlay = document.querySelector(".overlay");
+    const menuToggle = document.querySelector(".menu-toggle");
+    const menuDrawer = document.querySelector(".menu-drawer");
+    const searchDrawer = document.querySelector(".search-drawer");
+    const cartDrawer = document.querySelector(".cart-drawer");
+    const drawers = [menuDrawer, searchDrawer, cartDrawer];
+    const toast = document.querySelector(".toast");
+    const animatedSections = document.querySelectorAll(".featured, .collections");
+    const featuredSection = document.querySelector(".featured");
+    const collectionSection = document.querySelector(".collections");
+    const collectionGrid = document.querySelector(".collection-grid");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let toastTimer;
+    let ticking = false;
+    let featuredTimer;
+    let collectionTimer;
+    let featuredBusy = false;
+    let featuredStarted = false;
+    let collectionStarted = false;
+
+    body.classList.add("motion-ready");
+
+    function updateScrollEffects() {
+      const scrollY = window.scrollY || window.pageYOffset;
+      const heroHeight = hero.offsetHeight || 1;
+      const progress = Math.min(scrollY / heroHeight, 1);
+
+      siteHeader.classList.toggle("is-scrolled", scrollY > 44);
+      hero.style.setProperty("--hero-y", `${progress * 72}px`);
+      hero.style.setProperty("--hero-scroll-scale", (progress * 0.055).toFixed(3));
+      ticking = false;
+    }
+
+    function requestScrollUpdate() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScrollEffects);
+        ticking = true;
+      }
+    }
+
+    function isPanelVisible(panel) {
+      const style = window.getComputedStyle(panel);
+      return style.display !== "none" && panel.offsetWidth > 0 && panel.offsetHeight > 0;
+    }
+
+    async function swapFeaturedImages() {
+      if (featuredBusy || reduceMotion || document.hidden) return;
+
+      const panels = featuredSection.querySelectorAll(".image-panel");
+      if (panels.length < 2 || !isPanelVisible(panels[1])) return;
+
+      const leftPanel = panels[0];
+      const rightPanel = panels[1];
+      const leftImg = leftPanel.querySelector("img");
+      const rightImg = rightPanel.querySelector("img");
+      if (!leftImg || !rightImg) return;
+
+      const sectionRect = featuredSection.getBoundingClientRect();
+      const leftRect = leftPanel.getBoundingClientRect();
+      const rightRect = rightPanel.getBoundingClientRect();
+      if (!leftRect.width || !rightRect.width) return;
+
+      featuredBusy = true;
+      featuredSection.classList.add("is-swapping", "has-carousel");
+
+      const clone = rightImg.cloneNode(false);
+      clone.className = "featured-flying-img";
+      Object.assign(clone.style, {
+        left: `${rightRect.left - sectionRect.left}px`,
+        top: `${rightRect.top - sectionRect.top}px`,
+        width: `${rightRect.width}px`,
+        height: `${rightRect.height}px`
+      });
+      featuredSection.appendChild(clone);
+
+      const oldLeftSrc = leftImg.getAttribute("src");
+      const oldLeftAlt = leftImg.getAttribute("alt") || "";
+      const nextLeftSrc = rightImg.getAttribute("src");
+      const nextLeftAlt = rightImg.getAttribute("alt") || "";
+
+      rightImg.style.opacity = "0";
+
+      const leftOut = leftImg.animate([
+        { opacity: 1, transform: "translate3d(0, 0, 0) scale(1)" },
+        { opacity: 0.12, transform: "translate3d(-16%, 0, 0) scale(0.96)" }
+      ], {
+        duration: 850,
+        easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+        fill: "forwards"
+      });
+
+      const flight = clone.animate([
+        {
+          left: `${rightRect.left - sectionRect.left}px`,
+          top: `${rightRect.top - sectionRect.top}px`,
+          width: `${rightRect.width}px`,
+          height: `${rightRect.height}px`,
+          opacity: 0.98,
+          filter: "brightness(0.92) saturate(0.94)"
+        },
+        {
+          left: `${leftRect.left - sectionRect.left}px`,
+          top: `${leftRect.top - sectionRect.top}px`,
+          width: `${leftRect.width}px`,
+          height: `${leftRect.height}px`,
+          opacity: 1,
+          filter: "brightness(1) saturate(1)"
+        }
+      ], {
+        duration: 1180,
+        easing: "cubic-bezier(0.2, 0.82, 0.18, 1)",
+        fill: "forwards"
+      });
+
+      try {
+        await flight.finished;
+      } catch (error) {
+        // Animation cancelled by the browser; the swap below still restores a stable state.
+      }
+
+      leftImg.setAttribute("src", nextLeftSrc);
+      leftImg.setAttribute("alt", nextLeftAlt);
+      rightImg.setAttribute("src", oldLeftSrc);
+      rightImg.setAttribute("alt", oldLeftAlt);
+
+      leftOut.cancel();
+      clone.remove();
+      rightImg.style.opacity = "";
+
+      leftImg.animate([
+        { opacity: 0.2, transform: "scale(1.018)" },
+        { opacity: 1, transform: "scale(1)" }
+      ], {
+        duration: 520,
+        easing: "cubic-bezier(0.22, 1, 0.36, 1)"
+      });
+
+      rightImg.animate([
+        { opacity: 0, transform: "translate3d(18%, 0, 0) scale(0.96)" },
+        { opacity: 1, transform: "translate3d(0, 0, 0) scale(1)" }
+      ], {
+        duration: 760,
+        easing: "cubic-bezier(0.22, 1, 0.36, 1)"
+      });
+
+      featuredSection.classList.remove("is-swapping");
+      featuredBusy = false;
+    }
+
+    function startFeaturedCarousel() {
+      if (featuredStarted || reduceMotion) return;
+      featuredStarted = true;
+      window.setTimeout(() => {
+        swapFeaturedImages();
+        featuredTimer = window.setInterval(swapFeaturedImages, 5200);
+      }, 1200);
+    }
+
+    function animateCollectionEntrance() {
+      if (reduceMotion || !collectionGrid) return;
+
+      Array.from(collectionGrid.children).forEach((card, index) => {
+        card.animate([
+          { opacity: 0, transform: "translate3d(132px, 0, 0)" },
+          { opacity: 1, transform: "translate3d(-12px, 0, 0)", offset: 0.68 },
+          { opacity: 1, transform: "translate3d(0, 0, 0)" }
+        ], {
+          duration: 980,
+          delay: index * 105,
+          easing: "cubic-bezier(0.22, 1, 0.36, 1)"
+        });
+      });
+    }
+
+    function rotateCollectionCards() {
+      if (reduceMotion || document.hidden || !collectionGrid || collectionGrid.children.length < 2) return;
+
+      const cards = Array.from(collectionGrid.children);
+      const firstRects = new Map(cards.map((card) => [card, card.getBoundingClientRect()]));
+      collectionGrid.appendChild(cards[0]);
+
+      Array.from(collectionGrid.children).forEach((card) => {
+        const first = firstRects.get(card);
+        if (!first) return;
+
+        const last = card.getBoundingClientRect();
+        const dx = first.left - last.left;
+        const dy = first.top - last.top;
+
+        card.animate([
+          { transform: `translate3d(${dx}px, ${dy}px, 0)`, opacity: 0.96 },
+          { transform: "translate3d(0, 0, 0)", opacity: 1 }
+        ], {
+          duration: 980,
+          easing: "cubic-bezier(0.22, 1, 0.36, 1)"
+        });
+      });
+    }
+
+    function startCollectionCarousel() {
+      if (collectionStarted || reduceMotion) return;
+      collectionStarted = true;
+      window.setTimeout(() => {
+        collectionSection.classList.add("has-carousel");
+        rotateCollectionCards();
+        collectionTimer = window.setInterval(rotateCollectionCards, 4300);
+      }, 1350);
+    }
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          if (entry.target.classList.contains("featured")) startFeaturedCarousel();
+          if (entry.target.classList.contains("collections")) {
+            animateCollectionEntrance();
+            startCollectionCarousel();
+          }
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      rootMargin: "0px 0px -18% 0px",
+      threshold: 0.22
+    });
+
+    animatedSections.forEach((section) => revealObserver.observe(section));
+    window.addEventListener("scroll", requestScrollUpdate, { passive: true });
+    window.addEventListener("resize", requestScrollUpdate);
+    updateScrollEffects();
+
+    function showOverlay() {
+      overlay.hidden = false;
+      requestAnimationFrame(() => overlay.classList.add("is-open"));
+      body.classList.add("is-locked");
+    }
+
+    function closeAll() {
+      drawers.forEach((drawer) => drawer.classList.remove("is-open"));
+      overlay.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      body.classList.remove("is-locked");
+      window.setTimeout(() => {
+        if (!overlay.classList.contains("is-open")) overlay.hidden = true;
+        drawers.forEach((drawer) => {
+          if (!drawer.classList.contains("is-open")) drawer.hidden = true;
+        });
+      }, 250);
+    }
+
+    function openDrawer(drawer) {
+      drawers.forEach((item) => {
+        item.classList.remove("is-open");
+        item.hidden = true;
+      });
+      drawer.hidden = false;
+      showOverlay();
+      requestAnimationFrame(() => drawer.classList.add("is-open"));
+      menuToggle.setAttribute("aria-expanded", drawer === menuDrawer ? "true" : "false");
+    }
+
+    promoClose.addEventListener("click", () => {
+      promoBar.classList.add("is-hidden");
+      body.classList.add("promo-hidden");
+      requestScrollUpdate();
+    });
+    menuToggle.addEventListener("click", () => {
+      const isOpen = menuDrawer.classList.contains("is-open");
+      if (isOpen) closeAll();
+      else openDrawer(menuDrawer);
+    });
+    document.querySelector(".search-action").addEventListener("click", () => openDrawer(searchDrawer));
+    document.querySelector(".cart-action").addEventListener("click", () => openDrawer(cartDrawer));
+    document.querySelectorAll(".drawer-close").forEach((button) => button.addEventListener("click", closeAll));
+    document.querySelectorAll(".featured-arrows .arrow-button").forEach((button) => button.addEventListener("click", swapFeaturedImages));
+    overlay.addEventListener("click", closeAll);
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeAll();
+    });
+
+    document.querySelector(".play-button").addEventListener("click", () => {
+      window.clearTimeout(toastTimer);
+      toast.classList.add("is-open");
+      toastTimer = window.setTimeout(() => toast.classList.remove("is-open"), 2400);
+    });
+
+    const newsletterForm = document.querySelector(".newsletter-form");
+    if (newsletterForm) {
+      newsletterForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        const input = form.querySelector("input");
+        const message = form.querySelector(".newsletter-message");
+        message.textContent = "Merci, votre inscription est enregistree.";
+        message.classList.add("is-visible");
+        input.value = "";
+        window.setTimeout(() => message.classList.remove("is-visible"), 2600);
+      });
+    }
+  </script>
+</body>
+</html>
