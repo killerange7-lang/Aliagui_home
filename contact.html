@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact - Aliagui Home</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="overrides.css">
+</head>
+<body>
+  <div class="page contact-page">
+    <div class="top-strip">L'art du pagne dans votre maison</div>
+
+    <header class="site-header site-header--solid">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Aliagui Home">
+          <img class="brand-logo" src="assets/img/logo.png" alt="Aliagui Home">
+        </a>
+
+        <nav id="main-navigation" class="main-nav" aria-label="Navigation principale">
+          <a href="index.html">Accueil</a>
+          <a href="collections.html">Collections</a>
+          <a href="histoire.html">Histoire</a>
+          <a href="showroom.html">Showroom</a>
+          <a href="contact.html" aria-current="page">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="header-action search-action" type="button" aria-label="Rechercher">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.8 4a5.8 5.8 0 0 1 4.56 9.38l4.16 4.15-1.14 1.15-4.16-4.16A5.8 5.8 0 1 1 9.8 4Zm0 1.7a4.1 4.1 0 1 0 0 8.2 4.1 4.1 0 0 0 0-8.2Z"/></svg>
+            <span>Rechercher</span>
+          </button>
+          <button class="header-action cart-action" type="button" aria-label="Ouvrir le panier">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 7V6a5 5 0 0 1 10 0v1h2.05l1.2 14H3.75L4.95 7H7Zm2 0h6V6a3 3 0 0 0-6 0v1ZM6.7 8.7 5.82 19.3h12.36L17.3 8.7H6.7Z"/></svg>
+            <span>Panier (2)</span>
+            <span class="cart-badge" aria-hidden="true">2</span>
+          </button>
+          <button class="icon-button menu-toggle" type="button" aria-label="Ouvrir le menu" aria-controls="mobile-menu-drawer" aria-expanded="false"></button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="contact-hero-section">
+        <div class="contact-hero-copy">
+          <p class="eyebrow">Service client</p>
+          <h1>Nous sommes la pour vous accompagner.</h1>
+          <p>Une question sur une collection, une commande ou un rendez-vous showroom ? Ecrivez-nous, chaque demande est traitee avec soin.</p>
+        </div>
+        <img src="assets/showroom-bed.png" alt="Lit Aliagui Home dans une chambre claire">
+      </section>
+
+      <section class="contact-content section" aria-label="Contact Aliagui Home">
+        <form class="contact-form-panel" data-search="message nom email commande rendez-vous showroom collection">
+          <p class="eyebrow">Nous ecrire</p>
+          <h2>Envoyer un message</h2>
+          <div class="form-row">
+            <label>
+              <span>Nom complet</span>
+              <input type="text" name="name" autocomplete="name" required>
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+          </div>
+          <label>
+            <span>Sujet</span>
+            <input type="text" name="subject" required>
+          </label>
+          <label>
+            <span>Message</span>
+            <textarea name="message" rows="6" required></textarea>
+          </label>
+          <button class="send-button" type="submit">Envoyer</button>
+          <p class="form-message" aria-live="polite"></p>
+        </form>
+
+        <aside class="contact-side">
+          <section class="contact-card" data-search="showroom rendez-vous adresse abidjan">
+            <p class="eyebrow">Showroom</p>
+            <h2>Venir nous voir</h2>
+            <dl>
+              <div>
+                <dt>Adresse</dt>
+                <dd>Non loin du terrain d’Anono<br>Cocody – Anono<br>Abidjan, Côte d’Ivoire</dd>
+              </div>
+              <div>
+                <dt>Horaires</dt>
+                <dd>Lundi - Samedi : 9h00 - 18h00</dd>
+              </div>
+              <div>
+                <dt>Contact</dt>
+                <dd>+225 07 07 07 07 07<br>contact@aliaguihome.com</dd>
+              </div>
+            </dl>
+          </section>
+
+          <section class="contact-card social-card" data-search="facebook tiktok reseaux sociaux">
+            <p class="eyebrow">Reseaux</p>
+            <h2>Suivre Aliagui Home</h2>
+            <div class="social-actions">
+              <a class="social-button" href="https://www.facebook.com/Sublimeroum/?locale=fr_FR" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7h2.3l.4-3h-2.7V9.1c0-.9.2-1.5 1.5-1.5h1.3V4.9c-.6-.1-1.4-.2-2.4-.2-2.4 0-4 1.5-4 4.1V11H7.5v3h2.4v7h3.6Z"/></svg>
+                <span>Facebook</span>
+              </a>
+              <a class="social-button" href="https://www.tiktok.com/@sublimeroom" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.2 4.1c.5 1.5 1.6 2.7 3.1 3.2v3.1c-1.1 0-2.2-.3-3.1-.9v5.6a5.4 5.4 0 1 1-5.4-5.4h.8v3.2a2.2 2.2 0 1 0 1.5 2.1V4.1h3.1Z"/></svg>
+                <span>TikTok</span>
+              </a>
+            </div>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="mini-footer">
+      <div class="footer-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M4 11h13v8H4v-8Zm13 3h2.3l1.7 2.2V19h-4v-5ZM7 11V8.5h7V11M7.5 19.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm11 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"/></svg>
+        <div><h2>Livraison Express</h2><p>en 48h partout en Cote d'Ivoire</p></div>
+      </div>
+      <div class="footer-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M3 7h18v11H3V7Zm0 4h18M6 15h4"/></svg>
+        <div><h2>Paiement securise</h2><p>Visa, Mastercard, Orange Money</p></div>
+      </div>
+      <div class="footer-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M6 10a6 6 0 0 1 12 0v3a3 3 0 0 1-3 3h-2m-7-6H4v5h2v-5Zm12 0h2v5h-2v-5Z"/></svg>
+        <div><h2>Service Client</h2><p>Disponible 7j/7</p></div>
+      </div>
+      <div class="footer-ah">ALIAGUI HOME</div>
+    </footer>
+  </div>
+
+  <div class="overlay" hidden></div>
+
+  <a class="whatsapp-float" href="https://wa.me/2250707070707?text=Bonjour%20Aliagui%20Home%2C%20je%20souhaite%20avoir%20des%20informations." target="_blank" rel="noopener noreferrer" aria-label="Contacter Aliagui Home sur WhatsApp">
+    <span class="whatsapp-float__icon" aria-hidden="true">
+      <svg viewBox="0 0 32 32" focusable="false">
+        <path fill="currentColor" d="M16.03 4.5A11.4 11.4 0 0 0 6.2 21.68L4.8 27.5l5.96-1.35A11.42 11.42 0 1 0 16.03 4.5Zm0 2.05a9.37 9.37 0 0 1 7.9 14.42 9.35 9.35 0 0 1-11.9 3.13l-.41-.21-3.74.85.88-3.62-.25-.43a9.34 9.34 0 0 1 7.52-14.14Zm-4.2 4.8c-.2 0-.53.07-.8.37-.28.31-1.06 1.04-1.06 2.54 0 1.5 1.09 2.95 1.24 3.15.15.2 2.1 3.36 5.2 4.58 2.58 1.02 3.11.82 3.67.77.56-.05 1.8-.74 2.05-1.45.25-.71.25-1.32.18-1.45-.08-.13-.28-.2-.58-.35-.31-.15-1.8-.89-2.08-.99-.28-.1-.48-.15-.68.15-.2.3-.78.98-.96 1.18-.18.2-.35.23-.66.08-.3-.15-1.29-.48-2.46-1.52-.91-.81-1.52-1.81-1.7-2.11-.18-.3-.02-.47.13-.62.13-.13.3-.35.46-.53.15-.18.2-.31.3-.51.1-.2.05-.38-.03-.53-.08-.15-.68-1.64-.93-2.24-.25-.58-.5-.5-.68-.51h-.58Z"/>
+      </svg>
+    </span>
+    <span class="whatsapp-float__text">
+      <strong>WhatsApp</strong>
+      <span>Commande rapide</span>
+    </span>
+  </a>
+
+  <aside id="mobile-menu-drawer" class="drawer menu-drawer" aria-label="Menu mobile" hidden>
+    <button class="icon-button drawer-close x-icon" type="button" aria-label="Fermer le menu"></button>
+    <h2>Menu</h2>
+    <nav aria-label="Navigation mobile">
+      <a href="index.html">Accueil</a>
+      <a href="collections.html">Collections</a>
+      <a href="histoire.html">Histoire</a>
+      <a href="showroom.html">Showroom</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+    </nav>
+    <p class="drawer-note">Des draps en pagne et du linge de lit concus pour donner a la maison une memoire douce et contemporaine.</p>
+  </aside>
+
+  <aside class="drawer search-drawer" aria-label="Recherche" hidden>
+    <button class="icon-button drawer-close x-icon" type="button" aria-label="Fermer la recherche"></button>
+    <h2>Rechercher</h2>
+    <input type="search" placeholder="Draps, collections, showroom" aria-label="Recherche">
+    <ul class="search-suggestions">
+      <li><a href="collections.html">Parures en pagne</a></li>
+      <li><a href="histoire.html">Notre histoire</a></li>
+      <li><a href="showroom.html">Prendre rendez-vous</a></li>
+    </ul>
+  </aside>
+
+  <aside class="drawer cart-drawer" aria-label="Panier" hidden>
+    <button class="icon-button drawer-close x-icon" type="button" aria-label="Fermer le panier"></button>
+    <h2>Panier</h2>
+    <ul class="cart-list"></ul>
+    <p class="drawer-note">Votre panier est une demonstration interactive pour cette maquette.</p>
+  </aside>
+
+  <script src="interactions.js"></script>
+</body>
+</html>
